@@ -8,12 +8,12 @@ Traffic metered two ways (both from the browser):
   - actions:   in-page fetch meter (decoded payload bytes)
 Results -> results_browser.json (incremental)."""
 import json, time, os, subprocess, urllib.request, sys
-sys.path.insert(0, "/root/webmcp_demo")
-sys.path.insert(0, "/root")
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.expanduser("~"))
 from cdp import CDP
 from compare_llm import llm, clean, TASKS, CHECKS, LLM_KEY
 
-DIR = "/root/webmcp_demo"
+DIR = os.path.dirname(os.path.abspath(__file__))
 PLAIN = "https://demonomcp.converso.work"
 MCP   = "https://demowithmcp.converso.work"
 DEBUG = "http://127.0.0.1:9335"

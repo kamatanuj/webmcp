@@ -9,7 +9,7 @@ import json, time, re, os, urllib.request
 DIR = os.path.dirname(os.path.abspath(__file__))
 PLAIN = "https://demonomcp.converso.work"
 MCP   = "https://demowithmcp.converso.work"
-KEY = [l.split("=",1)[1].strip() for l in open("/root/.hermes/.env") if l.startswith("OPENROUTER_API_KEY=")][0]
+KEY = os.environ.get("OPENROUTER_API_KEY") or [l.split("=",1)[1].strip() for l in open(os.path.expanduser("~/.hermes/.env")) if l.startswith("OPENROUTER_API_KEY=")][0]
 MODEL = "z-ai/glm-5.3-flash"
 
 TASKS = [t["task"] for t in json.load(open(DIR + "/tasks8.json"))["tasks"]] if os.path.exists(DIR + "/tasks8.json") else [
