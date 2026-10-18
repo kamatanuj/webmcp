@@ -1,0 +1,24 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.kamatanuj/webmcp-store",
+  "description": "WebMCP demo store: same catalog via MCP tool calls vs DOM scraping. -79% bytes, -42% tokens.",
+  "title": "WebMCP Demo Store",
+  "websiteUrl": "https://demowithmcp.converso.work/launch.html",
+  "repository": {
+    "url": "https://github.com/kamatanuj/webmcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://demowithmcp.converso.work/mcp"
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "tool": "manual",
+      "version": "1.0.0"
+    }
+  }
+}
