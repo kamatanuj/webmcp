@@ -1,0 +1,82 @@
+{
+ "plain": {
+  "150": {
+   "success": "8/8",
+   "action_bytes": 237183,
+   "page_bytes": 446063,
+   "requests": 30,
+   "tok_in": 68932,
+   "tok_out": 8681,
+   "secs": 74.4,
+   "per_task_bytes": [
+    29532,
+    29534,
+    29790,
+    29533,
+    29735,
+    29658,
+    29749,
+    29652
+   ]
+  },
+  "30": {
+   "success": "8/8",
+   "action_bytes": 91323,
+   "page_bytes": 154835,
+   "requests": 32,
+   "tok_in": 13603,
+   "tok_out": 2461,
+   "secs": 25.3,
+   "per_task_bytes": [
+    11287,
+    11479,
+    11407,
+    11417,
+    11415,
+    11409,
+    11503,
+    11406
+   ]
+  }
+ },
+ "mcp": {
+  "150": {
+   "success": "8/8",
+   "action_bytes": 49037,
+   "page_bytes": 298657,
+   "requests": 53,
+   "tok_in": 39754,
+   "tok_out": 2959,
+   "secs": 57.3,
+   "per_task_bytes": [
+    6032,
+    5108,
+    6421,
+    4346,
+    6026,
+    6700,
+    8552,
+    5852
+   ]
+  },
+  "30": {
+   "success": "8/8",
+   "action_bytes": 40477,
+   "page_bytes": 144729,
+   "requests": 55,
+   "tok_in": 34796,
+   "tok_out": 3659,
+   "secs": 74.3,
+   "per_task_bytes": [
+    3706,
+    4406,
+    5948,
+    3718,
+    7104,
+    4262,
+    6335,
+    4998
+   ]
+  }
+ }
+}

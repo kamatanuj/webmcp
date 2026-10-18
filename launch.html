@@ -1,0 +1,38 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>WebMCP Launch Package — D-insights</title>
+<style>
+  body{font-family:DejaVu Sans,Arial,sans-serif;background:#0c1530;color:#e8eaf0;max-width:1080px;margin:0 auto;padding:48px 24px;line-height:1.5}
+  h1{color:#fff;font-size:40px} .k{color:#4fc3a1;letter-spacing:2px;font-size:14px;font-weight:bold;text-transform:uppercase;margin:28px 0 10px}
+  a.card{display:flex;gap:16px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(79,195,161,.4);border-radius:12px;padding:18px 22px;margin:10px 0;color:#dfe6f3;text-decoration:none}
+  a.card:hover{border-color:#4fc3a1;background:rgba(79,195,161,.1)}
+  .tag{font-size:12px;background:#4fc3a1;color:#0c1530;border-radius:20px;padding:3px 10px;font-weight:bold;white-space:nowrap}
+  .sub{color:#8fa0c4;font-size:14px} .b{color:#fff;font-weight:bold}
+  ul{margin:6px 0} code{background:rgba(79,195,161,.15);padding:2px 6px;border-radius:6px}
+  .foot{margin-top:36px;color:#5a6a8f;font-size:13px}
+  @media (max-width:700px){
+    body{padding:28px 18px} h1{font-size:32px} .k{margin-top:22px}
+    a.card{flex-direction:column;align-items:flex-start;gap:6px;padding:15px 18px}
+    a.card .tag{order:-1}
+    .sub{font-size:13px}
+  }
+</style></head><body>
+<h1>WebMCP — Launch Package</h1>
+<p class="sub">AI-native web delivery, proven at benchmark scale: agents read <b class="b">79% fewer bytes</b> and <b class="b">42% fewer tokens</b> on the same shopping tasks — 8/8 correct on a 150-product store.</p>
+
+<div class="k">Live demo (pick a lane)</div>
+<a class="card" href="https://demonomcp.converso.work/"><span><b>ShopDemo — standard web</b> <span class="sub">(DOM mode: what agents must do today)</span></span><span class="tag" style="margin-left:auto">DEMO</span></a>
+<a class="card" href="https://demowithmcp.converso.work/"><span><b>ShopDemo — WebMCP mode</b> <span class="sub">(MCP endpoint + Chrome-native document.modelContext)</span></span><span class="tag" style="margin-left:auto">DEMO</span></a>
+
+<div class="k">Strategy</div>
+<a class="card" href="/WebMCP_Launch_Deck.pdf"><span><b>Launch deck: Lessons from Buyhatke</b> <span class="sub">10 slides — distribution, transparency, retention, 3-week plan, scoreboard</span></span><span class="tag" style="margin-left:auto">PDF</span></a>
+<a class="card" href="/launch_deck.html"><span><b>Deck (HTML, crisp charts)</b></span><span class="tag" style="margin-left:auto">HTML</span></a>
+<a class="card" href="/buyhatke_endpoint_map.md"><span><b>Buyhatke endpoint map</b> <span class="sub">recon reference: prefix-resolution, priceData contract, ASIN regexes</span></span><span class="tag" style="margin-left:auto">MD</span></a>
+
+<div class="k">Evidence</div>
+<a class="card" href="/whitepaper.html"><span><b>WebMCP Whitepaper</b> <span class="sub">protocol thesis + architecture</span></span><span class="tag" style="margin-left:auto">HTML/PDF</span></a>
+<a class="card" href="/report.html"><span><b>150-product benchmark report</b> <span class="sub">bytes/tokens crossover: DOM mode wins small, WebMCP wins big</span></span><span class="tag" style="margin-left:auto">HTML</span></a>
+<a class="card" href="/report_browser.html"><span><b>Chrome-native verification</b> <span class="sub">document.modelContext end-to-end, real orders</span></span><span class="tag" style="margin-left:auto">HTML</span></a>
+<a class="card" href="/report_technical.html"><span><b>Technical report</b></span><span class="tag" style="margin-left:auto">HTML</span></a>
+
+<div class="foot">D-insights · converso.work · benchmark harness + all reports reproducible from /root/webmcp_demo · Generated 2026-10-18</div>
+</body></html>

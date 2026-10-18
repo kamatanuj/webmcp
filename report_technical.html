@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 15mm 13mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5pt; color: #1a1a2e; line-height: 1.5; }
+  h1 { color: #16213e; font-size: 18pt; margin-bottom: 2px; }
+  .sub { color: #667; font-size: 9pt; margin-bottom: 14px; }
+  h2 { color: #16213e; font-size: 12.5pt; border-bottom: 2px solid #4fc3a1; padding-bottom: 3px; margin-top: 18px; }
+  h3 { color: #16213e; font-size: 10.5pt; margin: 12px 0 4px; }
+  code { background: #f0f2f5; padding: 1px 4px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 8.5pt; }
+  pre { background: #f4f5f7; border: 1px solid #e0e3ea; border-radius: 5px; padding: 8px 10px; font-size: 8pt; font-family: 'Courier New', monospace; overflow-x: auto; line-height: 1.35; }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0; }
+  th { background: #16213e; color: white; padding: 5px 8px; text-align: left; font-size: 9pt; }
+  td { padding: 4px 8px; border-bottom: 1px solid #e3e6ee; font-size: 9pt; }
+  tr:nth-child(even) { background: #f8f9fa; }
+  .num { text-align: right; font-family: 'Courier New', monospace; }
+  img { width: 92%; margin: 6px auto; display: block; }
+  .box { background: #eef1f6; border-left: 3px solid #16213e; padding: 8px 12px; border-radius: 4px; margin: 10px 0; font-size: 9.5pt; }
+  .warn { background: #fdf3e7; border-left: 3px solid #e8a13a; }
+  .caption { font-size: 8.5pt; color: #667; margin-bottom: 10px; text-align: center; }
+  code.block { display: block; white-space: pre; }
+</style>
+</head>
+<body>
+
+<h1>WebMCP Experiment — Technical Report</h1>
+<div class="sub">Protocol-level comparison of AI-agent interaction with a standard vs MCP-enabled ecommerce site · 27 September 2026 · srv1322534 (76.13.246.122)</div>
+
+<h2>1. Abstract</h2>
+<p>We constructed two functionally identical ecommerce sites differing only in agent-facing interface exposure, then executed three identical shopping tasks against both with a deterministic agent driver. The MCP-enabled variant reduced agent-side data ingestion by <b>74% (33,971 → 9,157 bytes over 3 tasks)</b> at equal task success (3/3) and equal output correctness (identical product selections). This report documents the architecture, protocol implementation, test methodology, and measured deltas.</p>
+
+<h2>2. Architecture</h2>
+<h3>2.1 Deployment topology</h3>
+<pre>nginx (80/443, LE cert SAN: demonomcp + demowithmcp)
+  ├─ demowithmcp.converso.work → 127.0.0.1:9502  (server.py, env MCP=1)
+  └─ demonomcp.converso.work   → 127.0.0.1:9501  (server.py, env MCP=0)</pre>
+<ul>
+<li><b>Single-source dual deployment:</b> one Python 3 stdlib server file (<code>server.py</code>, ~230 lines, zero third-party deps) serves both sites; an env flag gates the MCP layer. UI, catalog, cart and checkout logic are byte-identical — eliminating site-side confounders.</li>
+<li><b>Persistence:</b> tmux sessions + <code>@reboot</code> crontab entries; in-memory state (carts/orders) — no database by design for the demo ceiling.</li>
+<li><b>DNS:</b> GoDaddy API (PUT /domains/converso.work/records/A/{name}), TTL 600.</li>
+</ul>
+
+<h3>2.2 WebMCP layer (treatment site only)</h3>
+<p>Implemented the WebMCP concept (per W3C WebMachineLearning draft direction) as two endpoints:</p>
+<table>
+<tr><th>Endpoint</th><th>Role</th></tr>
+<tr><td><code>GET /.well-known/mcp</code></td><td>Discovery manifest: server metadata, transport (HTTP), tool registry with JSON-Schema <code>inputSchema</code> per tool</td></tr>
+<tr><td><code>POST /mcp</code></td><td>JSON-RPC 2.0 transport: <code>initialize</code> (protocolVersion 2025-06-18), <code>tools/list</code>, <code>tools/call</code> → returns both <code>content[0].text</code> (serialized) and <code>structuredContent</code> (native JSON)</td></tr>
+</table>
+<h3>2.3 Tool manifest (5 tools)</h3>
+<table>
+<tr><th>Tool</th><th>Parameters (inputSchema)</th><th>Server-side behavior</th></tr>
+<tr><td><code>search_products</code></td><td>category ∈ {mice,laptops,phones}, max_price, min_rating, brand~, query~</td><td>Filter+sort (rating desc), cap 10</td></tr>
+<tr><td><code>get_product_details</code></td><td>id</td><td>Full record</td></tr>
+<tr><td><code>add_to_cart</code></td><td>id, qty=1</td><td>Session-scoped cart mutation; returns count+total</td></tr>
+<tr><td><code>get_cart</code></td><td>—</td><td>Items + total</td></tr>
+<tr><td><code>checkout</code></td><td>—</td><td>Order creation, cart reset, returns order_id</td></tr>
+</table>
+<p>Session affinity via <code>Mcp-Session-Id</code>/<code>X-Session-Id</code> headers (in-memory <code>dict[sid → cart]</code>). CORS: <code>POST/GET/OPTIONS</code> with wildcard origin (demo ceiling — production would pin origins).</p>
+
+<h3>2.4 Control site (plain)</h3>
+<p>Exposes REST only: <code>GET /api/products[?category=]</code> (full catalog or category slice, unfiltered), <code>POST /api/cart/add</code>, <code>POST /api/checkout</code>. No discovery document, no schema, no server-side filtering. This models the status-quo path for browsing agents: endpoint discovery from markup/JS, full-catalog retrieval, client-side reasoning.</p>
+
+<h3>2.5 Catalog</h3>
+<p>30 products (10 mice, 10 laptops, 10 phones), realistic Indian pricing (₹549–₹1,14,900), brand/spec/rating fields, static JSON. <span style="color:#888">Skipped live scraping (bot-detection cost, zero demo value) — noted as upgrade path to live feeds.</span></p>
+
+<h2>3. Methodology</h2>
+<h3>3.1 Agent driver</h3>
+<p>Deterministic rule-based driver (<code>compare.py</code>) — deliberately NOT an LLM, to isolate <b>mechanism cost</b> (I/O volume, request count, discovery burden) from model variance. Both drivers encode the same decision policy; only the access path differs:</p>
+<ul>
+<li><b>Plain path:</b> fetch <code>/</code> → regex-extract API surface from served JS → fetch full <code>/api/products</code> (30 items, ~11 KB) → filter/sort client-side → cart → checkout. Discovery cost is charged (the agent must parse the page to learn the API).</li>
+<li><b>MCP path:</b> fetch <code>/.well-known/mcp</code> → <code>initialize</code> → <code>tools/call search_products</code> (server-filtered, ~10 items) → <code>add_to_cart</code> → <code>checkout</code>. Discovery+handshake charged per task (worst case; real agents cache).</li>
+</ul>
+
+<h3>2.6 Instrumentation</h3>
+<p><code>Meter</code> wrapper: per-request count, accumulated response bytes, wall-clock. Session id pinned per task to make cart state coherent. Success assertion per task (e.g. task 2: pick == HP Pavilion 14 @ ₹52,990 — verified against catalog ground truth).</p>
+
+<h2>4. Results</h2>
+<table>
+<tr><th>Task</th><th>Site</th><th>Requests</th><th>Bytes read</th><th>Time (s)</th><th>Pick</th><th>Success</th></tr>
+<tr><td rowspan="2">1 — wireless mouse ≤ ₹1,500</td><td>plain</td><td class="num">3</td><td class="num">11,281</td><td class="num">0.03</td><td>Portronics Toad 32 (₹749)</td><td>✓</td></tr>
+<tr><td>mcp</td><td class="num">4</td><td class="num">3,030</td><td class="num">0.03</td><td>Portronics Toad 32</td><td>✓</td></tr>
+<tr><td rowspan="2">2 — cheapest laptop ≥ 4.3★</td><td>plain</td><td class="num">3</td><td class="num">11,283</td><td class="num">0.03</td><td>HP Pavilion 14 (₹52,990)</td><td>✓</td></tr>
+<tr><td>mcp</td><td class="num">4</td><td class="num">3,026</td><td class="num">0.02</td><td>HP Pavilion 14</td><td>✓</td></tr>
+<tr><td rowspan="2">3 — top-rated phone ≤ ₹30k + checkout</td><td>plain</td><td class="num">4</td><td class="num">11,407</td><td class="num">0.02</td><td>Redmi Note 13 Pro (₹21,999)</td><td>✓</td></tr>
+<tr><td>mcp</td><td class="num">5</td><td class="num">3,101</td><td class="num">0.03</td><td>Redmi Note 13 Pro</td><td>✓</td></tr>
+<tr><td colspan="2"><b>Totals</b></td><td class="num"><b>10 / 13</b></td><td class="num"><b>33,971 / 9,157</b></td><td class="num"><b>0.08 / 0.08</b></td><td>identical picks</td><td><b>3/3 / 3/3</b></td></tr>
+</table>
+
+<img src="chart_bytes.png">
+<div class="caption">Per-task ingestion: full-catalog pull (plain) vs server-filtered tool result (MCP)</div>
+<img src="chart_tokens.png">
+<div class="caption">~4 bytes/token heuristic → ~8,500 vs ~2,300 LLM-input tokens per 3 tasks</div>
+
+<h3>4.1 Analysis</h3>
+<ul>
+<li><b>Ingestion, not latency, is the differentiator.</b> Wall-clock parity is a localhost artifact; the material cost is bytes→tokens the agent LLM must ingest per task. The ratio is O(catalog_size) for plain (always fetches everything) vs O(result_cap) for MCP (server filters) — 74% at n=30, widening linearly with catalog growth.</li>
+<li><b>Request count (+3) is a fixed cost</b> of per-task discovery+initialize in the harness. Amortized across a session it decays toward zero; against N tasks the MCP overhead is constant while its savings scale with task count.</li>
+<li><b>Token economics:</b> at ~2.3k vs ~8.5k input tokens, and typical input-token pricing, the plain path costs ~3.7× more per task set before counting retries from DOM-ambiguity errors.</li>
+<li><b>Reliability:</b> MCP results carry schema-validated fields (typed numbers), while plain-path JSON parse+filter runs in driver code — the real-world failure modes (selector drift, layout A/B) are absent by construction here, which is why success is 3/3 on both; the plain path's fragility is deferred to LLM-driven agents and is where published agent benchmarks show larger error rates.</li>
+</ul>
+
+<h2>5. Implementation notes & known ceilings</h2>
+<ul>
+<li><code># ponytail:</code> in-memory cart/order state — dies on restart; upgrade: sqlite/redis when multi-process.</li>
+<li><code># ponytail:</code> wildcard CORS — acceptable for a public demo with no auth; pin origins before production.</li>
+<li><code># ponytail:</code> no auth on /mcp — rate-limit + API key needed before public real-traffic exposure.</li>
+<li>Protocol conformance: implements the MCP concept subset (initialize/tools.list/tools.call over JSON-RPC 2.0 HTTP, session header, structuredContent). Not the full 2025-06-18 spec (no SSE transport, resources, prompts, or streaming) — documented deviation for demo scope.</li>
+<li>Search tool returns <code>spec</code> in results (added mid-run) so agents can evaluate "wireless" serverlessly — a lesson in tool-schema design: agents only know what the result schema exposes.</li>
+<li>Harness fixes encountered: <code>{} is truthy</code> (body=None vs {} method dispatch), shared session-id for cart coherence, "mice" vs "mouse" lexical mismatch in category filters.</li>
+</ul>
+
+<h2>6. Threat & robustness observations</h2>
+<ul>
+<li>Tool descriptions are prompt-injection surface in real deployments (malicious listings could target agent reasoning); mitigations: server-side output sanitization, schema-validated returns, origin pinning.</li>
+<li>Cart/session keyed on client-supplied session id — fine for demo; production binds to signed session tokens.</li>
+</ul>
+
+<h2>7. Reproduction</h2>
+<pre>
+# artifacts (srv1322534)
+/root/webmcp_demo/server.py      # dual-mode server (MCP=1 gates the MCP layer)
+/root/webmcp_demo/compare.py     # harness: Meter, run_plain, run_mcp, task checks
+/root/webmcp_demo/results.json   # raw per-task/request metrics
+/root/webmcp_demo/report.json    # aggregate summary
+# run:  python3 /root/webmcp_demo/compare.py
+# live: https://demowithmcp.converso.work/.well-known/mcp  (manifest)
+#       https://demonomcp.converso.work/api/products       (control API)
+</pre>
+
+<div class="box"><b>Conclusion:</b> at mechanism level, WebMCP-style tool exposure cut agent ingestion 74% at zero accuracy cost for the tested tasks, with overhead bounded by a constant discovery cost. The architecture is sound for the stated use case; the listed ceilings (auth, persistence, conformance subset) define the production upgrade path.</div>
+
+<p class="sub" style="margin-top:18px">Artifacts: /root/webmcp_demo/ · Companion layman report: WebMCP_Comparison_Report.pdf · Contact: Hermes Agent on srv1322534</p>
+
+</body>
+</html>
+EOF
+echo done

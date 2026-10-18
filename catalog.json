@@ -1,0 +1,1208 @@
+{
+ "mice": [
+  {
+   "id": 1,
+   "name": "Logitech MX Master 3S",
+   "price": 8995,
+   "brand": "Logitech",
+   "rating": 4.7,
+   "spec": "8K DPI, USB-C, wireless, silent clicks"
+  },
+  {
+   "id": 2,
+   "name": "Logitech M235 Wireless",
+   "price": 1295,
+   "brand": "Logitech",
+   "rating": 4.4,
+   "spec": "2.4GHz, 24-month battery"
+  },
+  {
+   "id": 3,
+   "name": "Apple Magic Mouse",
+   "price": 7500,
+   "brand": "Apple",
+   "rating": 4.3,
+   "spec": "Multi-touch, wireless, Lightning charging"
+  },
+  {
+   "id": 4,
+   "name": "HP X3000 G2",
+   "price": 899,
+   "brand": "HP",
+   "rating": 4.2,
+   "spec": "1600 DPI, 18-month battery"
+  },
+  {
+   "id": 5,
+   "name": "Zebronics Zeb-Dash",
+   "price": 549,
+   "brand": "Zebronics",
+   "rating": 4.1,
+   "spec": "1200 DPI, USB wired"
+  },
+  {
+   "id": 6,
+   "name": "Razer DeathAdder Essential",
+   "price": 1899,
+   "brand": "Razer",
+   "rating": 4.6,
+   "spec": "6400 DPI, ergonomic gaming"
+  },
+  {
+   "id": 7,
+   "name": "Dell MS116 Wired",
+   "price": 599,
+   "brand": "Dell",
+   "rating": 4.0,
+   "spec": "1000 DPI, ambidextrous"
+  },
+  {
+   "id": 8,
+   "name": "Portronics Toad 32",
+   "price": 749,
+   "brand": "Portronics",
+   "rating": 4.2,
+   "spec": "2.4GHz, 1600 DPI"
+  },
+  {
+   "id": 9,
+   "name": "Corsair Harpoon RGB",
+   "price": 2499,
+   "brand": "Corsair",
+   "rating": 4.5,
+   "spec": "12000 DPI, 6 buttons"
+  },
+  {
+   "id": 10,
+   "name": "Lenovo Go Wireless",
+   "price": 3499,
+   "brand": "Lenovo",
+   "rating": 4.4,
+   "spec": "Wireless rechargeable, 4000 DPI"
+  },
+  {
+   "id": 31,
+   "name": "Microsoft Mouse Gaming 977",
+   "price": 2399,
+   "brand": "Microsoft",
+   "rating": 4.3,
+   "spec": "silent clicks, 16000 DPI, wireless, gaming"
+  },
+  {
+   "id": 32,
+   "name": "Cosmic Byte Mouse Gaming 289",
+   "price": 2599,
+   "brand": "Cosmic Byte",
+   "rating": 4.4,
+   "spec": "ergonomic, 16000 DPI, wireless, gaming"
+  },
+  {
+   "id": 33,
+   "name": "Portronics Mouse Gaming 557",
+   "price": 749,
+   "brand": "Portronics",
+   "rating": 4.3,
+   "spec": "Bluetooth, 1600 DPI, gaming"
+  },
+  {
+   "id": 34,
+   "name": "Logitech Mouse Travel 505",
+   "price": 999,
+   "brand": "Logitech",
+   "rating": 4.4,
+   "spec": "ergonomic, 3200 DPI, wireless"
+  },
+  {
+   "id": 35,
+   "name": "Asus Mouse Pro 160",
+   "price": 349,
+   "brand": "Asus",
+   "rating": 4.4,
+   "spec": "Bluetooth, 4800 DPI"
+  },
+  {
+   "id": 36,
+   "name": "Microsoft Mouse Max 551",
+   "price": 1399,
+   "brand": "Microsoft",
+   "rating": 4.0,
+   "spec": "Bluetooth, 20000 DPI"
+  },
+  {
+   "id": 37,
+   "name": "HP Mouse Office 104",
+   "price": 1899,
+   "brand": "HP",
+   "rating": 4.4,
+   "spec": "wireless 2.4GHz, 16000 DPI"
+  },
+  {
+   "id": 38,
+   "name": "Lenovo Mouse Travel 960",
+   "price": 649,
+   "brand": "Lenovo",
+   "rating": 4.5,
+   "spec": "USB-C wired, 8000 DPI"
+  },
+  {
+   "id": 39,
+   "name": "Asus Mouse Max 130",
+   "price": 399,
+   "brand": "Asus",
+   "rating": 4.2,
+   "spec": "ergonomic, 1600 DPI, wireless"
+  },
+  {
+   "id": 40,
+   "name": "HP Mouse Office 168",
+   "price": 299,
+   "brand": "HP",
+   "rating": 4.0,
+   "spec": "wireless 2.4GHz, 4800 DPI"
+  },
+  {
+   "id": 41,
+   "name": "Logitech Mouse Office 484",
+   "price": 1999,
+   "brand": "Logitech",
+   "rating": 3.9,
+   "spec": "silent clicks, 10000 DPI, wireless"
+  },
+  {
+   "id": 42,
+   "name": "Dell Mouse Max 444",
+   "price": 399,
+   "brand": "Dell",
+   "rating": 3.8,
+   "spec": "USB-C wired, 8000 DPI"
+  },
+  {
+   "id": 43,
+   "name": "Lenovo Mouse Pro 237",
+   "price": 649,
+   "brand": "Lenovo",
+   "rating": 3.9,
+   "spec": "wireless 2.4GHz, 1000 DPI"
+  },
+  {
+   "id": 44,
+   "name": "Microsoft Mouse Lite 798",
+   "price": 1299,
+   "brand": "Microsoft",
+   "rating": 4.3,
+   "spec": "Bluetooth, 16000 DPI"
+  },
+  {
+   "id": 45,
+   "name": "Portronics Mouse Office 759",
+   "price": 899,
+   "brand": "Portronics",
+   "rating": 4.2,
+   "spec": "wireless 2.4GHz, 10000 DPI"
+  },
+  {
+   "id": 46,
+   "name": "Dell Mouse Pro 376",
+   "price": 2599,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "ergonomic, 6400 DPI, wireless"
+  },
+  {
+   "id": 47,
+   "name": "Logitech Mouse Lite 291",
+   "price": 899,
+   "brand": "Logitech",
+   "rating": 3.9,
+   "spec": "ergonomic, 26000 DPI, wireless"
+  },
+  {
+   "id": 48,
+   "name": "Portronics Mouse Lite 552",
+   "price": 699,
+   "brand": "Portronics",
+   "rating": 4.1,
+   "spec": "wireless 2.4GHz, 26000 DPI"
+  },
+  {
+   "id": 49,
+   "name": "HP Mouse Office 175",
+   "price": 399,
+   "brand": "HP",
+   "rating": 4.4,
+   "spec": "wireless 2.4GHz, 4800 DPI"
+  },
+  {
+   "id": 50,
+   "name": "Dell Mouse Pro 715",
+   "price": 849,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "USB-C wired, 26000 DPI"
+  },
+  {
+   "id": 51,
+   "name": "Cosmic Byte Mouse Office 952",
+   "price": 1399,
+   "brand": "Cosmic Byte",
+   "rating": 4.0,
+   "spec": "Bluetooth, 10000 DPI"
+  },
+  {
+   "id": 52,
+   "name": "Portronics Mouse Max 333",
+   "price": 2799,
+   "brand": "Portronics",
+   "rating": 4.5,
+   "spec": "ergonomic, 4800 DPI, wireless"
+  },
+  {
+   "id": 53,
+   "name": "Portronics Mouse Travel 301",
+   "price": 1899,
+   "brand": "Portronics",
+   "rating": 4.4,
+   "spec": "silent clicks, 16000 DPI, wireless"
+  },
+  {
+   "id": 54,
+   "name": "Lenovo Mouse Pro 206",
+   "price": 449,
+   "brand": "Lenovo",
+   "rating": 4.1,
+   "spec": "wireless 2.4GHz, 20000 DPI"
+  },
+  {
+   "id": 55,
+   "name": "Dell Mouse Office 363",
+   "price": 949,
+   "brand": "Dell",
+   "rating": 4.1,
+   "spec": "ergonomic, 16000 DPI, wireless"
+  },
+  {
+   "id": 56,
+   "name": "Portronics Mouse Pro 229",
+   "price": 649,
+   "brand": "Portronics",
+   "rating": 4.4,
+   "spec": "silent clicks, 20000 DPI, wireless"
+  },
+  {
+   "id": 57,
+   "name": "Cosmic Byte Mouse Travel 175",
+   "price": 699,
+   "brand": "Cosmic Byte",
+   "rating": 4.5,
+   "spec": "Bluetooth, 4800 DPI"
+  },
+  {
+   "id": 58,
+   "name": "Razer Mouse Max 521",
+   "price": 999,
+   "brand": "Razer",
+   "rating": 3.8,
+   "spec": "Bluetooth, 1000 DPI"
+  },
+  {
+   "id": 59,
+   "name": "HP Mouse Max 643",
+   "price": 1399,
+   "brand": "HP",
+   "rating": 4.1,
+   "spec": "Bluetooth, 1600 DPI"
+  },
+  {
+   "id": 60,
+   "name": "Microsoft Mouse Max 772",
+   "price": 2199,
+   "brand": "Microsoft",
+   "rating": 4.1,
+   "spec": "ergonomic, 26000 DPI, wireless"
+  },
+  {
+   "id": 61,
+   "name": "Cosmic Byte Mouse Pro 118",
+   "price": 1099,
+   "brand": "Cosmic Byte",
+   "rating": 4.7,
+   "spec": "USB-C wired, 6400 DPI"
+  },
+  {
+   "id": 62,
+   "name": "Logitech Mouse Travel 751",
+   "price": 399,
+   "brand": "Logitech",
+   "rating": 4.5,
+   "spec": "silent clicks, 1600 DPI, wireless"
+  },
+  {
+   "id": 63,
+   "name": "Zebronics Mouse Lite 174",
+   "price": 399,
+   "brand": "Zebronics",
+   "rating": 4.1,
+   "spec": "silent clicks, 20000 DPI, wireless"
+  },
+  {
+   "id": 64,
+   "name": "Logitech Mouse Lite 912",
+   "price": 799,
+   "brand": "Logitech",
+   "rating": 4.5,
+   "spec": "USB-C wired, 1600 DPI"
+  },
+  {
+   "id": 65,
+   "name": "Razer Mouse Office 909",
+   "price": 299,
+   "brand": "Razer",
+   "rating": 3.8,
+   "spec": "silent clicks, 26000 DPI, wireless"
+  },
+  {
+   "id": 66,
+   "name": "Lenovo Mouse Office 696",
+   "price": 299,
+   "brand": "Lenovo",
+   "rating": 3.9,
+   "spec": "ergonomic, 1600 DPI, wireless"
+  },
+  {
+   "id": 67,
+   "name": "Razer Mouse Max 526",
+   "price": 2199,
+   "brand": "Razer",
+   "rating": 4.7,
+   "spec": "USB-C wired, 10000 DPI"
+  },
+  {
+   "id": 68,
+   "name": "Cosmic Byte Mouse Office 551",
+   "price": 999,
+   "brand": "Cosmic Byte",
+   "rating": 4.3,
+   "spec": "ergonomic, 1600 DPI, wireless"
+  },
+  {
+   "id": 69,
+   "name": "Asus Mouse Pro 417",
+   "price": 1499,
+   "brand": "Asus",
+   "rating": 3.8,
+   "spec": "wireless 2.4GHz, 16000 DPI"
+  },
+  {
+   "id": 70,
+   "name": "Razer Mouse Office 898",
+   "price": 1499,
+   "brand": "Razer",
+   "rating": 4.5,
+   "spec": "silent clicks, 6400 DPI, wireless"
+  }
+ ],
+ "laptops": [
+  {
+   "id": 11,
+   "name": "MacBook Air M3 13",
+   "price": 114900,
+   "brand": "Apple",
+   "rating": 4.9,
+   "spec": "M3, 8GB, 256GB SSD"
+  },
+  {
+   "id": 12,
+   "name": "Dell Inspiron 15 3520",
+   "price": 45990,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "i5-1235U, 8GB, 512GB"
+  },
+  {
+   "id": 13,
+   "name": "HP Pavilion 14",
+   "price": 52990,
+   "brand": "HP",
+   "rating": 4.3,
+   "spec": "i5-1335U, 16GB, 512GB"
+  },
+  {
+   "id": 14,
+   "name": "Lenovo IdeaPad Slim 3",
+   "price": 33990,
+   "brand": "Lenovo",
+   "rating": 4.1,
+   "spec": "i5-12450H, 8GB, 512GB"
+  },
+  {
+   "id": 15,
+   "name": "ASUS Vivobook 15",
+   "price": 41990,
+   "brand": "ASUS",
+   "rating": 4.2,
+   "spec": "R5-7530U, 16GB, 512GB"
+  },
+  {
+   "id": 16,
+   "name": "Acer Aspire 5",
+   "price": 29990,
+   "brand": "Acer",
+   "rating": 3.9,
+   "spec": "i5-12450H, 8GB, 512GB"
+  },
+  {
+   "id": 17,
+   "name": "Samsung Galaxy Book4",
+   "price": 62990,
+   "brand": "Samsung",
+   "rating": 4.3,
+   "spec": "i5-1335U, 16GB, 512GB"
+  },
+  {
+   "id": 18,
+   "name": "MacBook Air M2 13",
+   "price": 89900,
+   "brand": "Apple",
+   "rating": 4.8,
+   "spec": "M2, 8GB, 256GB"
+  },
+  {
+   "id": 19,
+   "name": "MSI Modern 14",
+   "price": 38990,
+   "brand": "MSI",
+   "rating": 4.0,
+   "spec": "i5-12450H, 16GB, 512GB"
+  },
+  {
+   "id": 20,
+   "name": "ThinkPad E14 Gen 5",
+   "price": 64990,
+   "brand": "Lenovo",
+   "rating": 4.4,
+   "spec": "i5-1335U, 16GB, 512GB"
+  },
+  {
+   "id": 71,
+   "name": "Samsung Slim 14",
+   "price": 76500,
+   "brand": "Samsung",
+   "rating": 4.0,
+   "spec": "i7 13th gen, OLED, 16GB"
+  },
+  {
+   "id": 72,
+   "name": "LG Ultra 14",
+   "price": 53000,
+   "brand": "LG",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, 8GB, RTX 4050"
+  },
+  {
+   "id": 73,
+   "name": "HP Slim 16",
+   "price": 71000,
+   "brand": "HP",
+   "rating": 4.2,
+   "spec": "Ryzen 7 7800, 16GB, RTX 4060"
+  },
+  {
+   "id": 74,
+   "name": "LG Slim 15",
+   "price": 45000,
+   "brand": "LG",
+   "rating": 4.0,
+   "spec": "Snapdragon X Elite, OLED, 8GB"
+  },
+  {
+   "id": 75,
+   "name": "LG Book 14",
+   "price": 86500,
+   "brand": "LG",
+   "rating": 4.2,
+   "spec": "i5 13th gen, 16GB, 1TB SSD"
+  },
+  {
+   "id": 76,
+   "name": "Acer Book 14",
+   "price": 60500,
+   "brand": "Acer",
+   "rating": 4.1,
+   "spec": "i7 13th gen, OLED, 8GB"
+  },
+  {
+   "id": 77,
+   "name": "Mi Air 17",
+   "price": 114000,
+   "brand": "Mi",
+   "rating": 4.2,
+   "spec": "Ryzen 5 5500U, 8GB, RTX 4050"
+  },
+  {
+   "id": 78,
+   "name": "MSI Pro 16",
+   "price": 94000,
+   "brand": "MSI",
+   "rating": 4.1,
+   "spec": "Ryzen 7 7800, 16GB, 512GB SSD"
+  },
+  {
+   "id": 79,
+   "name": "Dell Book 13",
+   "price": 63000,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "i5 13th gen, 16GB, RTX 4050"
+  },
+  {
+   "id": 80,
+   "name": "Apple Ultra 17",
+   "price": 46000,
+   "brand": "Apple",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, 16GB, RTX 4050"
+  },
+  {
+   "id": 81,
+   "name": "Dell Book 16",
+   "price": 40000,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, thin & light, 8GB"
+  },
+  {
+   "id": 82,
+   "name": "Mi Slim 16",
+   "price": 109000,
+   "brand": "Mi",
+   "rating": 4.1,
+   "spec": "i7 13th gen, 16GB, 512GB SSD"
+  },
+  {
+   "id": 83,
+   "name": "Lenovo Air 17",
+   "price": 106500,
+   "brand": "Lenovo",
+   "rating": 4.2,
+   "spec": "Ryzen 5 5500U, OLED, 16GB"
+  },
+  {
+   "id": 84,
+   "name": "Mi Air 15",
+   "price": 108500,
+   "brand": "Mi",
+   "rating": 4.0,
+   "spec": "Ryzen 7 7800, 8GB, 1TB SSD"
+  },
+  {
+   "id": 85,
+   "name": "Mi Book 17",
+   "price": 86000,
+   "brand": "Mi",
+   "rating": 3.9,
+   "spec": "i5 13th gen, thin & light, 16GB"
+  },
+  {
+   "id": 86,
+   "name": "MSI Ultra 14",
+   "price": 95500,
+   "brand": "MSI",
+   "rating": 3.9,
+   "spec": "Ryzen 5 7600, 16GB, 1TB SSD"
+  },
+  {
+   "id": 87,
+   "name": "Dell Slim 17",
+   "price": 38500,
+   "brand": "Dell",
+   "rating": 3.9,
+   "spec": "Ryzen 5 5500U, 8GB, 1TB SSD"
+  },
+  {
+   "id": 88,
+   "name": "Dell Air 16",
+   "price": 48500,
+   "brand": "Dell",
+   "rating": 4.0,
+   "spec": "i5 13th gen, thin & light, 16GB"
+  },
+  {
+   "id": 89,
+   "name": "Mi Air 14",
+   "price": 104000,
+   "brand": "Mi",
+   "rating": 4.1,
+   "spec": "Ryzen 5 5500U, thin & light, 8GB"
+  },
+  {
+   "id": 90,
+   "name": "Lenovo Pro 15",
+   "price": 58500,
+   "brand": "Lenovo",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, thin & light, 8GB"
+  },
+  {
+   "id": 91,
+   "name": "Asus Slim 13",
+   "price": 90500,
+   "brand": "Asus",
+   "rating": 4.1,
+   "spec": "Ryzen 5 5500U, thin & light, 8GB"
+  },
+  {
+   "id": 92,
+   "name": "Apple Book 14",
+   "price": 107000,
+   "brand": "Apple",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, OLED, 8GB"
+  },
+  {
+   "id": 93,
+   "name": "LG Air 17",
+   "price": 97000,
+   "brand": "LG",
+   "rating": 4.2,
+   "spec": "i7 13th gen, 8GB, 1TB SSD"
+  },
+  {
+   "id": 94,
+   "name": "Asus Book 17",
+   "price": 43000,
+   "brand": "Asus",
+   "rating": 4.0,
+   "spec": "i5 13th gen, 8GB, RTX 4050"
+  },
+  {
+   "id": 95,
+   "name": "Mi Ultra 16",
+   "price": 61000,
+   "brand": "Mi",
+   "rating": 4.0,
+   "spec": "i5 13th gen, OLED, 8GB"
+  },
+  {
+   "id": 96,
+   "name": "Acer Ultra 16",
+   "price": 59000,
+   "brand": "Acer",
+   "rating": 4.2,
+   "spec": "i5 13th gen, 8GB, 1TB SSD"
+  },
+  {
+   "id": 97,
+   "name": "MSI Air 17",
+   "price": 59000,
+   "brand": "MSI",
+   "rating": 4.1,
+   "spec": "Ryzen 5 7600, thin & light, 16GB"
+  },
+  {
+   "id": 98,
+   "name": "Lenovo Slim 14",
+   "price": 77000,
+   "brand": "Lenovo",
+   "rating": 4.1,
+   "spec": "Ryzen 7 7800, OLED, 8GB"
+  },
+  {
+   "id": 99,
+   "name": "HP Ultra 15",
+   "price": 96000,
+   "brand": "HP",
+   "rating": 4.2,
+   "spec": "Ryzen 5 7600, 8GB, 256GB SSD"
+  },
+  {
+   "id": 100,
+   "name": "LG Pro 17",
+   "price": 44500,
+   "brand": "LG",
+   "rating": 4.2,
+   "spec": "Ryzen 7 7800, thin & light, 8GB"
+  },
+  {
+   "id": 101,
+   "name": "Apple Book 17",
+   "price": 48000,
+   "brand": "Apple",
+   "rating": 3.8,
+   "spec": "Ryzen 5 7600, 16GB, 1TB SSD"
+  },
+  {
+   "id": 102,
+   "name": "Dell Slim 13",
+   "price": 47500,
+   "brand": "Dell",
+   "rating": 4.1,
+   "spec": "Ryzen 5 7600, OLED, 16GB"
+  },
+  {
+   "id": 103,
+   "name": "HP Slim 13",
+   "price": 105000,
+   "brand": "HP",
+   "rating": 4.2,
+   "spec": "Ryzen 7 7800, 8GB, 512GB SSD"
+  },
+  {
+   "id": 104,
+   "name": "Samsung Air 17",
+   "price": 112000,
+   "brand": "Samsung",
+   "rating": 4.0,
+   "spec": "Ryzen 7 7800, 16GB, RTX 4060"
+  },
+  {
+   "id": 105,
+   "name": "Asus Ultra 17",
+   "price": 71500,
+   "brand": "Asus",
+   "rating": 3.8,
+   "spec": "Snapdragon X Elite, OLED, 16GB"
+  },
+  {
+   "id": 106,
+   "name": "MSI Slim 13",
+   "price": 75000,
+   "brand": "MSI",
+   "rating": 4.0,
+   "spec": "i5 13th gen, 16GB, RTX 3050"
+  },
+  {
+   "id": 107,
+   "name": "Samsung Ultra 14",
+   "price": 40000,
+   "brand": "Samsung",
+   "rating": 4.1,
+   "spec": "Ryzen 5 5500U, 16GB, 256GB SSD"
+  },
+  {
+   "id": 108,
+   "name": "HP Book 17",
+   "price": 88500,
+   "brand": "HP",
+   "rating": 3.9,
+   "spec": "i7 13th gen, 8GB, 512GB SSD"
+  },
+  {
+   "id": 109,
+   "name": "MSI Ultra 17",
+   "price": 52500,
+   "brand": "MSI",
+   "rating": 4.2,
+   "spec": "i7 13th gen, 16GB, 1TB SSD"
+  },
+  {
+   "id": 110,
+   "name": "Dell Pro 14",
+   "price": 99000,
+   "brand": "Dell",
+   "rating": 3.9,
+   "spec": "Ryzen 5 5500U, 8GB, 1TB SSD"
+  }
+ ],
+ "phones": [
+  {
+   "id": 21,
+   "name": "iPhone 15 128GB",
+   "price": 65900,
+   "brand": "Apple",
+   "rating": 4.7,
+   "spec": "A16, 48MP"
+  },
+  {
+   "id": 22,
+   "name": "Samsung Galaxy S24",
+   "price": 61999,
+   "brand": "Samsung",
+   "rating": 4.6,
+   "spec": "Exynos 2400, 50MP"
+  },
+  {
+   "id": 23,
+   "name": "OnePlus 12R",
+   "price": 39999,
+   "brand": "OnePlus",
+   "rating": 4.5,
+   "spec": "SD 8 Gen 2, 5500mAh"
+  },
+  {
+   "id": 24,
+   "name": "Redmi Note 13 Pro",
+   "price": 21999,
+   "brand": "Xiaomi",
+   "rating": 4.4,
+   "spec": "200MP, AMOLED"
+  },
+  {
+   "id": 25,
+   "name": "Realme 13 Pro+",
+   "price": 27999,
+   "brand": "Realme",
+   "rating": 4.3,
+   "spec": "Sony sensor, 80W"
+  },
+  {
+   "id": 26,
+   "name": "iQOO Z9s Pro",
+   "price": 24999,
+   "brand": "iQOO",
+   "rating": 4.4,
+   "spec": "SD 7 Gen 3, 5500mAh"
+  },
+  {
+   "id": 27,
+   "name": "Pixel 8a",
+   "price": 44999,
+   "brand": "Google",
+   "rating": 4.6,
+   "spec": "Tensor G3, 7yr updates"
+  },
+  {
+   "id": 28,
+   "name": "Nothing Phone 2a",
+   "price": 23999,
+   "brand": "Nothing",
+   "rating": 4.3,
+   "spec": "Glyph, SD 7+ Gen 3"
+  },
+  {
+   "id": 29,
+   "name": "Samsung A55 5G",
+   "price": 35999,
+   "brand": "Samsung",
+   "rating": 4.3,
+   "spec": "Exynos 1480, IP67"
+  },
+  {
+   "id": 30,
+   "name": "Vivo V40",
+   "price": 34999,
+   "brand": "Vivo",
+   "rating": 4.4,
+   "spec": "Zeiss camera, 80W"
+  },
+  {
+   "id": 111,
+   "name": "Xiaomi Neo 5 5G",
+   "price": 50900,
+   "brand": "Xiaomi",
+   "rating": 4.0,
+   "spec": "Helio G99, 6000mAh, wireless charging"
+  },
+  {
+   "id": 112,
+   "name": "Vivo Z 13 5G",
+   "price": 19000,
+   "brand": "Vivo",
+   "rating": 4.2,
+   "spec": "SD 7 Gen 2, 4800mAh, 5G, AMOLED"
+  },
+  {
+   "id": 113,
+   "name": "iQOO Z 14 5G",
+   "price": 19900,
+   "brand": "iQOO",
+   "rating": 4.0,
+   "spec": "Helio G99, 5000mAh, 5G, AMOLED"
+  },
+  {
+   "id": 114,
+   "name": "Xiaomi Z 12 5G",
+   "price": 33500,
+   "brand": "Xiaomi",
+   "rating": 4.3,
+   "spec": "Dimensity 7200, fast charging, 4800mAh"
+  },
+  {
+   "id": 115,
+   "name": "Oppo Neo 11 5G",
+   "price": 41500,
+   "brand": "Oppo",
+   "rating": 3.9,
+   "spec": "Dimensity 7200, fast charging, 6000mAh"
+  },
+  {
+   "id": 116,
+   "name": "Realme Neo 3 5G",
+   "price": 54900,
+   "brand": "Realme",
+   "rating": 4.5,
+   "spec": "Helio G99, fast charging, 6000mAh"
+  },
+  {
+   "id": 117,
+   "name": "Realme Nord 12 5G",
+   "price": 56900,
+   "brand": "Realme",
+   "rating": 4.4,
+   "spec": "Helio G99, 5600mAh, 5G"
+  },
+  {
+   "id": 118,
+   "name": "Realme Note 7 5G",
+   "price": 63900,
+   "brand": "Realme",
+   "rating": 4.1,
+   "spec": "SD 4 Gen 2, fast charging, 4500mAh"
+  },
+  {
+   "id": 119,
+   "name": "Oppo Edge 13 5G",
+   "price": 46900,
+   "brand": "Oppo",
+   "rating": 4.5,
+   "spec": "SD 7 Gen 2, 5800mAh, 5G, AMOLED"
+  },
+  {
+   "id": 120,
+   "name": "Google Edge 4 5G",
+   "price": 15900,
+   "brand": "Google",
+   "rating": 3.8,
+   "spec": "Dimensity 6100, 5400mAh, AMOLED"
+  },
+  {
+   "id": 121,
+   "name": "OnePlus Neo 10 5G",
+   "price": 29500,
+   "brand": "OnePlus",
+   "rating": 3.9,
+   "spec": "SD 4 Gen 2, fast charging, 4800mAh"
+  },
+  {
+   "id": 122,
+   "name": "Vivo Note 2 5G",
+   "price": 50500,
+   "brand": "Vivo",
+   "rating": 4.5,
+   "spec": "SD 4 Gen 2, 5000mAh, 5G"
+  },
+  {
+   "id": 123,
+   "name": "Realme Z 14 5G",
+   "price": 43900,
+   "brand": "Realme",
+   "rating": 4.1,
+   "spec": "Helio G99, 6000mAh, wireless charging"
+  },
+  {
+   "id": 124,
+   "name": "Vivo Edge 9 5G",
+   "price": 41500,
+   "brand": "Vivo",
+   "rating": 4.1,
+   "spec": "Dimensity 7200, 4800mAh, 5G, AMOLED"
+  },
+  {
+   "id": 125,
+   "name": "Vivo Note 14 5G",
+   "price": 35000,
+   "brand": "Vivo",
+   "rating": 4.1,
+   "spec": "Dimensity 6100, 6000mAh, 5G"
+  },
+  {
+   "id": 126,
+   "name": "Samsung Note 8 5G",
+   "price": 37000,
+   "brand": "Samsung",
+   "rating": 3.9,
+   "spec": "SD 4 Gen 2, 5200mAh, wireless charging"
+  },
+  {
+   "id": 127,
+   "name": "Realme Z 8 5G",
+   "price": 43900,
+   "brand": "Realme",
+   "rating": 4.1,
+   "spec": "SD 6 Gen 1, 5400mAh, 5G"
+  },
+  {
+   "id": 128,
+   "name": "OnePlus Nord 12 5G",
+   "price": 20000,
+   "brand": "OnePlus",
+   "rating": 4.2,
+   "spec": "Dimensity 6100, 4500mAh, 5G"
+  },
+  {
+   "id": 129,
+   "name": "Realme Neo 5 5G",
+   "price": 48500,
+   "brand": "Realme",
+   "rating": 4.0,
+   "spec": "Dimensity 6100, 6000mAh, 5G, AMOLED"
+  },
+  {
+   "id": 130,
+   "name": "Nothing Neo 9 5G",
+   "price": 64900,
+   "brand": "Nothing",
+   "rating": 4.4,
+   "spec": "Helio G99, 6000mAh, wireless charging"
+  },
+  {
+   "id": 131,
+   "name": "Nothing Nord 14 5G",
+   "price": 13500,
+   "brand": "Nothing",
+   "rating": 4.2,
+   "spec": "Helio G99, 5200mAh, wireless charging"
+  },
+  {
+   "id": 132,
+   "name": "Realme Z 11 5G",
+   "price": 66000,
+   "brand": "Realme",
+   "rating": 3.9,
+   "spec": "Helio G99, 5800mAh, AMOLED"
+  },
+  {
+   "id": 133,
+   "name": "Nothing Edge 12 5G",
+   "price": 57500,
+   "brand": "Nothing",
+   "rating": 3.8,
+   "spec": "Dimensity 6100, 5400mAh, 5G, AMOLED"
+  },
+  {
+   "id": 134,
+   "name": "Google Edge 2 5G",
+   "price": 24000,
+   "brand": "Google",
+   "rating": 4.4,
+   "spec": "Dimensity 6100, fast charging, 5000mAh"
+  },
+  {
+   "id": 135,
+   "name": "OnePlus Z 13 5G",
+   "price": 40000,
+   "brand": "OnePlus",
+   "rating": 3.8,
+   "spec": "Helio G99, 6400mAh, 5G, AMOLED"
+  },
+  {
+   "id": 136,
+   "name": "Realme Z 5 5G",
+   "price": 54000,
+   "brand": "Realme",
+   "rating": 4.3,
+   "spec": "Dimensity 7200, 6000mAh, AMOLED"
+  },
+  {
+   "id": 137,
+   "name": "Nothing Z 4 5G",
+   "price": 63900,
+   "brand": "Nothing",
+   "rating": 3.9,
+   "spec": "SD 6 Gen 1, fast charging, 5600mAh"
+  },
+  {
+   "id": 138,
+   "name": "iQOO Z 12 5G",
+   "price": 56000,
+   "brand": "iQOO",
+   "rating": 3.9,
+   "spec": "SD 4 Gen 2, 5600mAh, 5G"
+  },
+  {
+   "id": 139,
+   "name": "Oppo Z 13 5G",
+   "price": 61000,
+   "brand": "Oppo",
+   "rating": 4.5,
+   "spec": "Dimensity 7200, 6600mAh, wireless charging"
+  },
+  {
+   "id": 140,
+   "name": "Motorola Edge 6 5G",
+   "price": 47000,
+   "brand": "Motorola",
+   "rating": 4.0,
+   "spec": "SD 4 Gen 2, 6000mAh, 5G"
+  },
+  {
+   "id": 141,
+   "name": "Google Edge 6 5G",
+   "price": 50900,
+   "brand": "Google",
+   "rating": 4.4,
+   "spec": "Helio G99, fast charging, 6200mAh"
+  },
+  {
+   "id": 142,
+   "name": "Vivo Z 15 5G",
+   "price": 35000,
+   "brand": "Vivo",
+   "rating": 4.4,
+   "spec": "SD 7 Gen 2, 4800mAh, 5G"
+  },
+  {
+   "id": 143,
+   "name": "Xiaomi Edge 5 5G",
+   "price": 36000,
+   "brand": "Xiaomi",
+   "rating": 4.0,
+   "spec": "Dimensity 7200, 6000mAh, 5G"
+  },
+  {
+   "id": 144,
+   "name": "Xiaomi Note 8 5G",
+   "price": 37000,
+   "brand": "Xiaomi",
+   "rating": 3.9,
+   "spec": "Dimensity 6100, 5600mAh, wireless charging"
+  },
+  {
+   "id": 145,
+   "name": "Realme Edge 15 5G",
+   "price": 54900,
+   "brand": "Realme",
+   "rating": 4.3,
+   "spec": "SD 6 Gen 1, fast charging, 6000mAh"
+  },
+  {
+   "id": 146,
+   "name": "Oppo Neo 13 5G",
+   "price": 31000,
+   "brand": "Oppo",
+   "rating": 4.0,
+   "spec": "Dimensity 7200, 6600mAh, 5G, AMOLED"
+  },
+  {
+   "id": 147,
+   "name": "Realme Nord 6 5G",
+   "price": 51900,
+   "brand": "Realme",
+   "rating": 4.0,
+   "spec": "SD 6 Gen 1, 4800mAh, 5G, AMOLED"
+  },
+  {
+   "id": 148,
+   "name": "Vivo Nord 15 5G",
+   "price": 16500,
+   "brand": "Vivo",
+   "rating": 4.3,
+   "spec": "Helio G99, 5000mAh, 5G, AMOLED"
+  },
+  {
+   "id": 149,
+   "name": "Vivo Neo 10 5G",
+   "price": 43000,
+   "brand": "Vivo",
+   "rating": 4.6,
+   "spec": "Dimensity 6100, 6400mAh, AMOLED"
+  },
+  {
+   "id": 150,
+   "name": "Realme Neo 2 5G",
+   "price": 50500,
+   "brand": "Realme",
+   "rating": 4.0,
+   "spec": "SD 7 Gen 2, 5200mAh, 5G"
+  }
+ ]
+}

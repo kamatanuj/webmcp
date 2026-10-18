@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ShopPilot / WebMCP — Production Execution Plan &amp; Budget</title>
+<style>
+  @page { size: A4; margin: 15mm 13mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 9.5pt; color: #1c2733; line-height: 1.45; }
+  h1 { font-size: 19pt; color: #0b3d62; margin: 0 0 2px 0; }
+  h2 { font-size: 12.5pt; color: #0b3d62; border-bottom: 2px solid #0b3d62; padding-bottom: 2px; margin: 16px 0 6px 0; page-break-after: avoid; }
+  h3 { font-size: 10.5pt; color: #14507e; margin: 10px 0 4px 0; page-break-after: avoid; }
+  .sub { color: #5a6a7a; font-size: 9pt; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; margin: 6px 0 10px 0; }
+  th { background: #0b3d62; color: white; padding: 5px 8px; text-align: left; font-size: 9pt; }
+  td { padding: 4px 8px; page-break-inside: avoid; border-bottom: 1px solid #e3e8ee; vertical-align: top; }
+  tr:nth-child(even) { background: #f6f8fa; }
+  .num { text-align: right; font-family: 'Courier New', monospace; }
+  .warn { background: #fff7e6; border-left: 4px solid #e6a23c; padding: 6px 10px; margin: 8px 0; }
+  .good { background: #eef7ee; border-left: 4px solid #3a9d5c; padding: 6px 10px; margin: 8px 0; }
+  .pb { page-break-before: always; }
+  .kpi { display: inline-block; background: #0b3d62; color: white; padding: 3px 10px; border-radius: 3px; font-size: 9pt; margin: 2px; }
+  ul { margin: 4px 0 8px 18px; padding: 0; }
+  li { margin-bottom: 2px; }
+  .small { font-size: 8.5pt; color: #5a6a7a; }
+  code { background: #eef1f4; padding: 0 3px; border-radius: 2px; font-size: 8.5pt; }
+</style>
+</head>
+<body>
+
+<h1>ShopPilot — WebMCP Agent-Ready Commerce</h1>
+<div class="sub">Production execution plan &amp; budget · D-Insights · 27 September 2026 · companion to the ShopPilot Whitepaper (sent 27-Sep AM) · all figures INR lakh (₹L) unless noted; ₹1L = ₹100,000</div>
+
+<div>
+<span class="kpi">Duration: 9 months (Nov '26 – Jul '27)</span>
+<span class="kpi">Total cash-out: ₹36–48L</span>
+<span class="kpi">Team: 2–3 people</span>
+<span class="kpi">Year-1 ARR target (base): ~₹39L</span>
+<span class="kpi">Break-even: ~month 9</span>
+</div>
+
+<h2>1. Where we already are (assets in hand)</h2>
+<table>
+<tr><th style="width:30%">Asset</th><th style="width:40%">State</th><th>Value to the plan</th></tr>
+<tr><td>Live A/B demo (74% token reduction)</td><td>Live at demowithmcp / demonomcp .converso.work — same store, with/without WebMCP layer, 5 tools (search, details, cart, checkout) + <code>/.well-known/mcp</code> discovery</td><td>The proof-of-concept and the sales asset. Everything Phase 1 builds is this demo, hardened.</td></tr>
+<tr><td>Evidence pack (3 PDFs)</td><td>Whitepaper, technical report, comparison report — measured 74% LLM-token reduction, 3/3 task accuracy</td><td>Merchant + investor pitch collateral, ready.</td></tr>
+<tr><td>Whitepaper financial model</td><td>Year-1 ARR ₹6L / ₹39L / ₹120L (pess/base/opt), costs ₹30–48L, break-even ~month 9 (base)</td><td>This plan's budget is the build-side of that same model — made concrete.</td></tr>
+<tr><td>Spec timing</td><td>WebMCP: Chrome 146 Canary preview (Feb '26), origin trial Chrome 149, W3C draft (Apr '26). Polyfill + extension path works on every browser today; native API is additive.</td><td>12–24 month land-grab window. Build on the stable polyfill now, migrate to native API when stable — adapters outlive the interface.</td></tr>
+</table>
+
+<h2>2. Product scope (what "production" means here)</h2>
+<ul>
+<li><b>Browser extension "ShopPilot"</b> (Chrome Web Store + Firefox): registers the site's real APIs as structured agent tools on every supported store, in the user's own session. Human-in-the-loop checkout (spec-mandated confirm gate).</li>
+<li><b>Platform adapters</b>: Shopify first (one platform, ~60%+ storefronts with top-3 coverage), then WooCommerce, Magento. Platform-detection + per-adapter contract tests against real stores.</li>
+<li><b>Merchant registry + dashboard</b> (Model C SaaS): opt-in catalog registration in the agent tool registry, agent-analytics dashboard (visits, carts, orders, attribution).</li>
+<li><b>Affiliate layer</b>: attribution tags via aggregators (Cuelinks/EarnKaro) so revenue starts day 1.</li>
+<li><b>Pro tier</b>: unlimited stores, checkout automation, savings report ("saved you ₹1,240 this month").</li>
+<li><b>Backbone</b>: event instrumentation from day 1 (install → store-visit → tool-call → cart → checkout) — this dataset is the Pro/SaaS pitch.</li>
+</ul>
+
+<h2>3. Phases, deliverables, gates</h2>
+
+<h3>Phase 0 — Validation (2 weeks, ~₹0) · Nov '26</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Work</td><td>15 interviews: 5 Shopify-India D2C merchants, 5 shoppers, 5 agent-platform builders. Landing page + demo video from existing assets (₹0 — demo is live).</td></tr>
+<tr><td>Deliverable</td><td>Interview scorecard, go/no-go memo, waitlist (target 200 signups).</td></tr>
+<tr><td><b>Kill gate</b></td><td><b>If merchants don't care about agent traffic OR shoppers won't install for shopping → stop or pivot to Model C (merchant analytics first). Cost to date: ~₹1.5L.</b></td></tr>
+</table>
+
+<h3>Phase 1 — MVP wedge (6 weeks) · Dec '26–mid Jan '27</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Build</td><td>Manifest-V3 extension on the demo's MCP layer: Shopify adapter (products/search/cart/checkout via store's own APIs + session), confirm-gated checkout, affiliate tag injection, event instrumentation.</td></tr>
+<tr><td>Deliverables</td><td>Extension works on 20 real Shopify India stores; privacy policy; Chrome Web Store submission.</td></tr>
+<tr><td>Gate</td><td>10 successful agent-driven checkouts on real stores; Web Store review passed.</td></tr>
+<tr><td>Costs (month)</td><td>₹4.0L (2 eng × ₹1.5L + infra/fees ₹1L)</td></tr>
+</table>
+
+<h3 class="pb">Phase 2 — Launch + affiliate revenue (8 weeks) · Feb–Mar '27</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Build</td><td>WooCommerce adapter; Pro tier (savings report, unlimited stores); affiliate aggregator integration (Cuelinks/EarnKaro) with attribution dashboard.</td></tr>
+<tr><td>GTM</td><td>Product Hunt launch, r/Shopify, D2C India communities (wp: phase-1 GTM from whitepaper); target 5k installs, first ₹ affiliate payouts.</td></tr>
+<tr><td>Gate</td><td>2.5k installs, ≥₹50k affiliate revenue booked, CUE/Pro waitlist 500.</td></tr>
+<tr><td>Costs (2 months)</td><td>₹8L + ₹0.5L GTM</td></tr>
+</table>
+
+<h3>Phase 3 — Merchant SaaS beta (8 weeks) · Apr–May '27</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Build</td><td>Merchant registry (opt-in), agent-analytics dashboard, agent-visit verification ("structured wall of HTML" → registered tools), billing (Razorpay). White-label 10 pilot merchants free→paid.</td></tr>
+<tr><td>Gate</td><td>10 merchants active; ≥2 paying ₹2k/mo; agent-attributed GMV measurable end-to-end.</td></tr>
+<tr><td>Costs (2 months)</td><td>₹8L</td></tr>
+</table>
+
+<h3>Phase 4 — Scale + platform wedge (12 weeks) · Jun–Jul '27</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Build</td><td>Magento adapter; Pro conversion funnel (in-extension upgrade prompt, pricing vs visible savings); native WebMCP API path (Chrome 149 origin trial) behind a flag; partner talks (agent platforms need third-party stores — Switzerland positioning).</td></tr>
+<tr><td>Gate</td><td>10k installs; 150 Pro subs; 10 paying merchants; native-API parity with polyfill.</td></tr>
+<tr><td>Costs (3 months)</td><td>₹14L (+₹1L legal: entity/ToS/privacy)</td></tr>
+</table>
+
+<h3>Phase 5 — Production hardening &amp; Year-1 target (continuous) · Jul '27 →</h3>
+<table>
+<tr><th style="width:22%">Item</th><th>Detail</th></tr>
+<tr><td>Build</td><td>SOC-2-lite posture (audit logs, least-privilege, DPDP compliance — India data residency), SLA for merchant API, marketplace adapter SDK (licensing line from whitepaper).</td></tr>
+<tr><td>Gate</td><td>50k installs, 500 Pro subs, 50 merchants paid → base-case ARR ~₹39L run-rate.</td></tr>
+</table>
+
+<h2>4. Team plan</h2>
+<table>
+<tr><th style="width:26%">Role</th><th style="width:18%">When</th><th>Notes</th></tr>
+<tr><td>You (product/GTM, D-Insights)</td><td>Full-time from Phase 0</td><td>Interviews, merchant sales, pricing, partnerships.</td></tr>
+<tr><td>Eng #1 — extension/agent</td><td>Phase 1 →</td><td>Chrome extension, adapters, MCP layer. (This plan's build could be executed agent-first via Hermes subagents — compresses Eng #1 cost materially.)</td></tr>
+<tr><td>Eng #2 — backend/SaaS</td><td>Phase 3 → (part-time Phase 1–2)</td><td>Registry, dashboard, billing, affiliate attribution.</td></tr>
+<tr><td>Designer (contract)</td><td>Phase 1–2 only</td><td>Onboarding UX + dashboard. ~₹1–1.5L total.</td></tr>
+</table>
+
+<h2>5. Budget: month-by-month cash view (₹L)</h2>
+<table>
+<tr><th>Month</th><th>Phase</th><th class="num">Eng</th><th class="num">Infra+tools</th><th class="num">GTM/legal</th><th class="num">Total out</th><th class="num">Revenue in</th><th class="num">Cum. net</th></tr>
+<tr><td>Nov '26</td><td>0 validation</td><td class="num">0.5</td><td class="num">0.1</td><td class="num">0.1</td><td class="num">0.7</td><td class="num">0</td><td class="num">-0.7</td></tr>
+<tr><td>Dec '26</td><td>1 MVP</td><td class="num">3.0</td><td class="num">0.4</td><td class="num">0.2</td><td class="num">3.6</td><td class="num">0</td><td class="num">-4.3</td></tr>
+<tr><td>Jan '27</td><td>1 MVP+launch prep</td><td class="num">3.0</td><td class="num">0.4</td><td class="num">0.3</td><td class="num">3.7</td><td class="num">0.1</td><td class="num">-7.9</td></tr>
+<tr><td>Feb '27</td><td>2 launch</td><td class="num">3.0</td><td class="num">0.5</td><td class="num">0.8</td><td class="num">4.3</td><td class="num">0.3</td><td class="num">-11.9</td></tr>
+<tr><td>Mar '27</td><td>2 affiliate</td><td class="num">3.0</td><td class="num">0.5</td><td class="num">0.3</td><td class="num">3.8</td><td class="num">0.6</td><td class="num">-15.1</td></tr>
+<tr><td>Apr '27</td><td>3 SaaS beta</td><td class="num">4.5</td><td class="num">0.6</td><td class="num">0.3</td><td class="num">5.4</td><td class="num">1.0</td><td class="num">-19.5</td></tr>
+<tr><td>May '27</td><td>3 SaaS beta</td><td class="num">4.5</td><td class="num">0.6</td><td class="num">0.3</td><td class="num">5.4</td><td class="num">1.6</td><td class="num">-23.3</td></tr>
+<tr><td>Jun '27</td><td>4 scale</td><td class="num">4.5</td><td class="num">0.8</td><td class="num">0.4</td><td class="num">5.7</td><td class="num">2.4</td><td class="num">-26.6</td></tr>
+<tr><td>Jul '27</td><td>4 scale</td><td class="num">4.5</td><td class="num">0.8</td><td class="num">0.6</td><td class="num">5.9</td><td class="num">3.2</td><td class="num">-29.3</td></tr>
+<tr><td><b>Aug '27</b></td><td>5 run-rate</td><td class="num">4.5</td><td class="num">0.8</td><td class="num">0.4</td><td class="num">5.7</td><td class="num">4.0</td><td class="num">-31.0</td></tr>
+<tr><td>Sep '27</td><td>5</td><td class="num">4.5</td><td class="num">0.8</td><td class="num">0.4</td><td class="num">5.7</td><td class="num">4.8</td><td class="num">-31.9</td></tr>
+<tr><td><b>Oct '27</b></td><td><b>5</b></td><td class="num">4.5</td><td class="num">0.8</td><td class="num">0.4</td><td class="num">5.7</td><td class="num">5.6</td><td class="num"><b>-32.0</b></td></tr>
+</table>
+<p class="small">Break-even (monthly): ~month 9–10 (Aug–Sep '27). Peak cumulative burn ~₹32L. Add 20% contingency → <b>raise/allocate ₹38–40L</b> to reach self-funding with margin. Revenue ramp from whitepaper base case: affiliate (₹30 Cr GMV × 3%), Pro 500×₹200, SaaS 50×₹3k/mo by Dec-27.</p>
+
+<h3>Infrastructure &amp; tooling (inside the ₹0.4–0.8L/month line)</h3>
+<table>
+<tr><th>Item</th><th class="num">Monthly</th></tr>
+<tr><td>Hosting (existing x86 box first, ₹800/mo VPS at scale), domains, TLS</td><td class="num">₹1–3k</td></tr>
+<tr><td>Supabase free tier → Pro at Phase 3 (~$25/mo)</td><td class="num">₹0–2.2k</td></tr>
+<tr><td>LLM tokens for agent testing (Ollama Cloud, glm-5.3-flash class)</td><td class="num">₹5–15k</td></tr>
+<tr><td>Chrome Web Store dev fee (one-time $5), Sentry, Posthog free tiers</td><td class="num">~₹0</td></tr>
+<tr><td>Razorpay/payment aggregator fees (2% of SaaS collections)</td><td class="num">variable</td></tr>
+</table>
+
+<h2>6. Risk register (production-specific additions to the whitepaper's list)</h2>
+<table>
+<tr><th style="width:30%">Risk</th><th style="width:14%">Severity</th><th>Mitigation</th></tr>
+<tr><td>Chrome Web Store review rejects session-injection</td><td>High</td><td>Honey precedent (user-session model, no credential capture); declarative-forms API where possible; pre-review consult with a CWS policy expert before submission (₹50k, one-time).</td></tr>
+<tr><td>WebMCP spec drift / native API changes</td><td>Medium</td><td>Adapters written against the stable polyfill; native path is additive (Chrome 149 OT); contract tests re-run on every Chrome canary.</td></tr>
+<tr><td>Shopify API / ToS changes</td><td>High</td><td>Adapters pinned per API version; read public data only in free tier; opt-in registry for anything write-heavy.</td></tr>
+<tr><td>Affiliate program terms change</td><td>Medium</td><td>Dual aggregator (Cuelinks + EarnKaro); Pro+SaaS revenue share grows each quarter.</td></tr>
+<tr><td>Agent checkout errors damage merchant trust</td><td>Medium</td><td>Confirm-gate by design; full tool-call audit log; auto-rollback for cart mutations.</td></tr>
+<tr><td>Team attrition (2-person core)</td><td>Medium</td><td>Agent-first build (Hermes subagents) reduces single-person dependency; docs-as-code from day 1.</td></tr>
+</table>
+
+<h2>7. First 10 concrete actions (this week)</h2>
+<ul>
+<li>1. Lock Phase-0 interview list (15 names across Shopify India D2C + shoppers + agent builders) — LinkedIn outreach from your profile.</li>
+<li>2. Ship the waitlist landing page from existing demo assets (demowithmcp is the demo video backdrop).</li>
+<li>3. Write the 5-question interview script; schedule for next week.</li>
+<li>4. Reserve handles: shoppilot.ai / getshoppilot / etc.; trademark quick-check.</li>
+<li>5. Set up the monorepo: <code>extension/</code> (MV3), <code>registry/</code>, <code>dashboard/</code>, <code>adapters/shopify/</code>.</li>
+<li>6. Port the demo's 5 MCP tools into the MV3 extension skeleton with the confirm-gate flow.</li>
+<li>7. Apply: Chrome Web Store developer account ($5), Cuelinks + EarnKaro affiliate accounts.</li>
+<li>8. Instrumentation schema: install / store-visit / tool-call / cart / checkout events (one JSON schema, one sink).</li>
+<li>9. Pricing page draft: Free / Pro ₹199/mo / Merchant ₹2k–4k/mo (ROI-framed).</li>
+<li>10. Kill-gate review scheduled: 15-Nov-2026 — decision memo against Phase-0 criteria.</li>
+</ul>
+
+<div class="warn"><b>The one honest unknown:</b> will consumers let an agent finish checkouts? Affiliate income from day 1 keeps this self-funding while that's tested, and Phase 0's kill gate caps the downside at ~₹0.7L + one month of your time.</div>
+<div class="good"><b>Why this wins:</b> the demo and evidence already exist (74% measured), the wedge is thin (extension + Shopify + affiliate), and the window (12–24 months before native WebMCP is table stakes) is real. The moat is the cross-store agent-behavior dataset — instrumented from Phase 1, day 1.</div>
+
+</body>
+</html>

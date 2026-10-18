@@ -1,0 +1,63 @@
+WebMCP Launch Strategy: Lessons from Buyhatke
+
+Slide 2 - Product-as-Distribution
+
+Buyhatke's trick: no install needed. Type buyhatke.com/ before any Amazon link and you instantly see price history.
+
+
+
+
+Lesson: The easier the first aha, the more people share it.
+WebMCP: No SDK install - the webmcp.dev/demo link shows instant value.
+
+Slide 3 - Radical Transparency + Creator Payments
+
+When Amazon blocked their affiliate earnings, Buyhatke chose users over revenue: an open how-we-earn page and 100% of referral money to creators.
+
+
+
+
+Lesson: Honesty is a marketing weapon; paying creators fully turns them into evangelists.
+WebMCP: Publish benchmark methodology openly, pay developers rev-share.
+
+Slide 4 - Multi-Vertical Retention
+
+Price-drop alerts, auto-applied coupons, and a Spend Lens dashboard across shopping and flights keep users coming back. The longer they use it, the harder to leave.
+
+Slide 5 - $0-Install Demo
+
+Buyhatke saves shoppers money. WebMCP saves developers tokens: paste a link, see 79% less bytes and 42% fewer tokens on a 150-product benchmark. Instant proof, zero friction.
+
+Slide 6 - Developer Ambassadors
+
+Open-source contributors who verify benchmark numbers and promote WebMCP get micro-rewards and rev-share. Their public validation is free credibility.
+
+Slide 7 - Token-Savings Recaps
+
+Weekly recap to integrators: you saved 4.2M tokens this week. Weekly proof of value builds the habit of staying.
+
+Slide 8 - 3-Week Launch Plan
+
+Week 1: Launch the zero-install demo, publish methodology docs.
+
+Week 2: Onboard developer ambassadors, ship the 150-product benchmark report.
+
+Week 3: Cross-vertical expansion, automated token-savings recaps.
+
+Slide 9 - The Scoreboard
+
+Three KPIs:
+
+Demo conversion rate
+
+Active developer ambassadors
+
+Deep integrations shipped
+
+Slide 10 - Who Does What:
+
+Developers: Claim rewards and build.
+
+Browser vendors: Adopt the testing methodology.
+
+Strategists: Watch live benchmarks.

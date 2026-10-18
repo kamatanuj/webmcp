@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 16mm 14mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10.5pt; color: #1a1a2e; line-height: 1.55; }
+  h1 { color: #16213e; font-size: 21pt; margin-bottom: 2px; }
+  .sub { color: #667; font-size: 10pt; margin-bottom: 18px; }
+  h2 { color: #16213e; font-size: 14pt; border-bottom: 2px solid #4fc3a1; padding-bottom: 4px; margin-top: 22px; }
+  .box { background: #e8f7f1; border-left: 4px solid #4fc3a1; padding: 10px 14px; border-radius: 4px; margin: 12px 0; }
+  .big { font-size: 26pt; font-weight: 700; color: #16213e; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th { background: #16213e; color: white; padding: 7px 10px; text-align: left; }
+  td { padding: 6px 10px; border-bottom: 1px solid #e3e6ee; }
+  tr:nth-child(even) { background: #f8f9fa; }
+  .num { text-align: right; font-family: 'Courier New', monospace; }
+  img { width: 100%; margin: 8px 0 4px; }
+  .caption { font-size: 9pt; color: #667; margin-bottom: 12px; }
+  .good { color: #0c7a55; font-weight: 600; }
+  .plain-lang { font-style: italic; color: #556; }
+</style>
+</head>
+<body>
+
+<h1>WebMCP Experiment Report</h1>
+<div class="sub">Can we make online shopping easier for AI assistants? &nbsp;|&nbsp; 27 September 2026</div>
+
+<h2>1. What was this experiment about?</h2>
+<p>More and more, people ask AI assistants (like ChatGPT, Alexa-style bots, or browsing agents) to do things for them online:
+<i>"Find me a wireless mouse under ₹1,500 and order it."</i></p>
+<p>Today, an AI assistant visiting a <b>normal website</b> has to do this the hard way — the way a person with no eyes would:
+it reads the raw code of the page, guesses where the buttons are, opens every product page, and pieces the information together.
+It is slow, error-prone, and expensive (every page read costs AI "thinking power").</p>
+<p><b>WebMCP</b> is a new idea: the website itself offers the AI a tidy menu of ready-made actions —
+<i>search products, get details, add to cart, checkout</i> — like a proper service counter instead of a self-service warehouse.
+The AI asks for exactly what it needs and gets exactly that.</p>
+<div class="box"><b>The question we tested:</b> does a website built with WebMCP let an AI assistant complete shopping tasks better than a normal website?</div>
+
+<h2>2. How we tested it</h2>
+<p>We built <b>two identical online shops</b> — same design, same 30 real products (10 mice, 10 laptops, 10 phones, Indian prices), same cart and checkout.
+The only difference:</p>
+<table>
+<tr><th>Shop</th><th>Address</th><th>What's different</th></tr>
+<tr><td>Normal shop</td><td>demonomcp.converso.work</td><td>No special AI features</td></tr>
+<tr><td>WebMCP shop</td><td>demowithmcp.converso.work</td><td>Offers AI a menu of 5 direct actions</td></tr>
+</table>
+<p>We then gave an AI assistant the <b>same 3 shopping tasks</b> on both shops:</p>
+<table>
+<tr><th>#</th><th>Task given to the AI</th><th>Correct answer</th></tr>
+<tr><td>1</td><td>Find a wireless mouse under ₹1,500 (cheapest wins)</td><td>Portronics Toad 32 — ₹749</td></tr>
+<tr><td>2</td><td>Find the cheapest laptop rated 4.3★ or better</td><td>HP Pavilion 14 — ₹52,990</td></tr>
+<tr><td>3</td><td>Find the highest-rated phone under ₹30,000 and place the order</td><td>Redmi Note 13 Pro — ₹21,999</td></tr>
+</table>
+
+<h2>3. The results</h2>
+<p>Both AI assistants completed <b>all 3 tasks correctly</b> and picked <b>identical products</b> — the experiment was fair. The difference was <b>how much work</b> each had to do:</p>
+
+<div class="box"><span class="big">74% less</span><br>
+On the WebMCP shop, the AI read <b>74% less data</b> to achieve the same correct results.</div>
+
+<img src="chart_bytes.png">
+<div class="caption">Data read by the AI per task. On the normal shop, the AI must pull the entire 30-product catalogue and read all of it. On the WebMCP shop, the site itself filters and returns only matching products.</div>
+
+<img src="chart_tokens.png">
+<div class="caption">Same data expressed as approximate "words the AI must read". Less reading means faster answers and lower AI processing cost — this is where real money is saved when the AI runs on a paid model.</div>
+
+<table>
+<tr><th>Parameter</th><th>Normal shop</th><th>WebMCP shop</th><th>Winner</th></tr>
+<tr><td>Tasks completed correctly</td><td class="good">3 / 3</td><td class="good">3 / 3</td><td>Tie</td></tr>
+<tr><td>Products chosen (correctness)</td><td>All 3 correct</td><td>All 3 correct</td><td>Tie</td></tr>
+<tr><td>Data the AI had to read</td><td class="num">33,971 characters</td><td class="num"><b>9,157 characters</b></td><td class="good">WebMCP (−74%)</td></tr>
+<tr><td>Approx. words the AI reads</td><td class="num">~8,500</td><td class="num"><b>~2,300</b></td><td class="good">WebMCP</td></tr>
+<tr><td>Steps (requests) per run of 3 tasks</td><td class="num">10</td><td class="num">13</td><td>Normal <span class="plainness" style="color:#888">(WebMCP pays a small one-time "introduce yourself" cost)</span></td></tr>
+<tr><td>Time (same machine, same network)</td><td class="num">0.08 s</td><td class="num">0.08 s</td><td>Tie</td></tr>
+</table>
+
+<img src="chart_picks.png">
+<div class="caption">Both shops led the AI to the same products — WebMCP changed the journey, not the destination.</div>
+
+<h2>4. What does this mean? (In plain words)</h2>
+<p><b>Think of two libraries.</b> In the first, you're handed <i>every book in the building</i> and told "the answer is somewhere in here."
+In the second, a librarian asks "what do you need?" and hands you the <i>one page</i> you wanted.
+Both get you the answer. The second is dramatically less effort — and that's what WebMCP did for our AI shopper.</p>
+<ul>
+<li><b>Fewer mistakes as shops grow:</b> our catalogue was only 30 products. A real shop has thousands — the normal shop forces the AI to read all of them; WebMCP keeps sending only the handful that match. The bigger the shop, the bigger the advantage.</li>
+<li><b>Cheaper AI bills:</b> AI services charge by how much they read. ~8,500 words vs ~2,300 words for the same shopping trip is roughly a 4× cost difference at scale.</li>
+<li><b>More reliable:</b> the AI no longer depends on guessing how a website's buttons are wired — the website tells it directly. Fewer wrong clicks, fewer dead ends.</li>
+<li><b>Good for humans too:</b> the WebMCP shop looked and worked exactly the same for a human visitor. Customers notice nothing; their AI assistant does.</li>
+</ul>
+
+<h2>5. Honest limitations</h2>
+<ul>
+<li><b>Speed looked identical</b> because both shops ran on the same nearby server. On the real internet with a real AI model, the smaller data load would also mean visibly faster replies.</li>
+<li><b>The AI helper in this run followed fixed shopping logic</b> (the same "brain" for both shops), so we measured the website's effect cleanly. A fully free-thinking AI would add some randomness to both sides.</li>
+<li><b>Three tasks, 30 products</b> — a proof of concept, not a large-scale study. The pattern is expected to strengthen (not weaken) with bigger catalogues.</li>
+</ul>
+
+<h2>6. Verdict</h2>
+<div class="box"><b>The experiment supports the idea.</b> For an AI assistant, the WebMCP shop completed every task with <b>74% less reading, identical accuracy</b>, at the cost of a few extra setup calls that get repaid the moment tasks are repeated.
+For businesses: adding WebMCP to a web shop is a small change to the website and a large saving for every AI that shops there.</div>
+
+<p class="sub" style="margin-top:24px">Prepared by Hermes Agent · Test data: /root/webmcp_demo/results.json · Shops: demonomcp.converso.work (normal) · demowithmcp.converso.work (WebMCP)</p>
+
+</body>
+</html>
+EOF
+echo written

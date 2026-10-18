@@ -1,0 +1,29 @@
+{
+ "plain": {
+  "requests": 10,
+  "bytes_agent_reads": 33971,
+  "time_s": 0.08,
+  "success": "3/3",
+  "picks": [
+   "Portronics Toad 32",
+   "HP Pavilion 14",
+   "Redmi Note 13 Pro"
+  ]
+ },
+ "mcp": {
+  "requests": 13,
+  "bytes_agent_reads": 9157,
+  "time_s": 0.08,
+  "success": "3/3",
+  "picks": [
+   "Portronics Toad 32",
+   "HP Pavilion 14",
+   "Redmi Note 13 Pro"
+  ]
+ },
+ "delta": {
+  "bytes_saved": "74%",
+  "same_tasks": 3,
+  "same_outcomes": true
+ }
+}

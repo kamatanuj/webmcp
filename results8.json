@@ -1,0 +1,178 @@
+[
+ {
+  "task": 1,
+  "site": "plain",
+  "requests": 3,
+  "bytes": 11311,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Portronics Toad 32",
+  "order_id": null,
+  "task_text": "Find a wireless mouse under \u20b91,500 and add it to cart"
+ },
+ {
+  "task": 1,
+  "site": "mcp",
+  "requests": 4,
+  "bytes": 3032,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Portronics Toad 32",
+  "order_id": null,
+  "task_text": "Find a wireless mouse under \u20b91,500 and add it to cart"
+ },
+ {
+  "task": 2,
+  "site": "plain",
+  "requests": 3,
+  "bytes": 11313,
+  "secs": 0.02,
+  "success": true,
+  "pick": "HP Pavilion 14",
+  "order_id": null,
+  "task_text": "Find the cheapest laptop with rating 4.3 or higher, add to cart"
+ },
+ {
+  "task": 2,
+  "site": "mcp",
+  "requests": 4,
+  "bytes": 3028,
+  "secs": 0.02,
+  "success": true,
+  "pick": "HP Pavilion 14",
+  "order_id": null,
+  "task_text": "Find the cheapest laptop with rating 4.3 or higher, add to cart"
+ },
+ {
+  "task": 3,
+  "site": "plain",
+  "requests": 4,
+  "bytes": 11431,
+  "secs": 0.03,
+  "success": true,
+  "pick": "iQOO Z9s Pro",
+  "order_id": 1011,
+  "task_text": "Find phone with longest battery life under \u20b930,000, add to cart, checkout"
+ },
+ {
+  "task": 3,
+  "site": "mcp",
+  "requests": 5,
+  "bytes": 4581,
+  "secs": 0.02,
+  "success": true,
+  "pick": "iQOO Z9s Pro",
+  "order_id": 1010,
+  "task_text": "Find phone with longest battery life under \u20b930,000, add to cart, checkout"
+ },
+ {
+  "task": 4,
+  "site": "plain",
+  "requests": 3,
+  "bytes": 11311,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Razer DeathAdder Essential",
+  "order_id": null,
+  "task_text": "Add the highest-rated gaming mouse under \u20b93,000 to the cart"
+ },
+ {
+  "task": 4,
+  "site": "mcp",
+  "requests": 4,
+  "bytes": 4480,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Razer DeathAdder Essential",
+  "order_id": null,
+  "task_text": "Add the highest-rated gaming mouse under \u20b93,000 to the cart"
+ },
+ {
+  "task": 5,
+  "site": "plain",
+  "requests": 4,
+  "bytes": 11439,
+  "secs": 0.03,
+  "success": true,
+  "pick": "MacBook Air M3 13",
+  "order_id": 1012,
+  "task_text": "Buy the most expensive laptop in stock \u2014 add to cart and checkout"
+ },
+ {
+  "task": 5,
+  "site": "mcp",
+  "requests": 5,
+  "bytes": 4713,
+  "secs": 0.02,
+  "success": true,
+  "pick": "MacBook Air M3 13",
+  "order_id": 1011,
+  "task_text": "Buy the most expensive laptop in stock \u2014 add to cart and checkout"
+ },
+ {
+  "task": 6,
+  "site": "plain",
+  "requests": 4,
+  "bytes": 11433,
+  "secs": 0.03,
+  "success": true,
+  "pick": "Realme 13 Pro+",
+  "order_id": 1013,
+  "task_text": "Find a phone with wireless or fast charging under \u20b930,000, add to cart, checkout"
+ },
+ {
+  "task": 6,
+  "site": "mcp",
+  "requests": 5,
+  "bytes": 4585,
+  "secs": 0.03,
+  "success": true,
+  "pick": "Realme 13 Pro+",
+  "order_id": 1012,
+  "task_text": "Find a phone with wireless or fast charging under \u20b930,000, add to cart, checkout"
+ },
+ {
+  "task": 7,
+  "site": "plain",
+  "requests": 5,
+  "bytes": 11527,
+  "secs": 0.03,
+  "success": true,
+  "pick": "Logitech MX Master 3S",
+  "order_id": 1014,
+  "task_text": "Add the cheapest wired mouse (at least rating 4.0) to cart, then add the highest-rated wireless mouse regardless of price, then check out"
+ },
+ {
+  "task": 7,
+  "site": "mcp",
+  "requests": 6,
+  "bytes": 5200,
+  "secs": 0.03,
+  "success": true,
+  "pick": "Logitech MX Master 3S",
+  "order_id": 1013,
+  "task_text": "Add the cheapest wired mouse (at least rating 4.0) to cart, then add the highest-rated wireless mouse regardless of price, then check out"
+ },
+ {
+  "task": 8,
+  "site": "plain",
+  "requests": 4,
+  "bytes": 11430,
+  "secs": 0.02,
+  "success": true,
+  "pick": "OnePlus 12R",
+  "order_id": 1015,
+  "task_text": "We have \u20b940,000. Buy the best-rated phone we can afford, checkout"
+ },
+ {
+  "task": 8,
+  "site": "mcp",
+  "requests": 5,
+  "bytes": 4579,
+  "secs": 0.02,
+  "success": true,
+  "pick": "OnePlus 12R",
+  "order_id": 1014,
+  "task_text": "We have \u20b940,000. Buy the best-rated phone we can afford, checkout"
+ }
+]

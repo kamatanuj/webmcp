@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopDemo — Mice, Laptops, Phones</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; background: #f5f6f8; color: #1a1a2e; }
+  header { background: #16213e; color: #fff; padding: 14px 24px; display: flex; align-items: center; gap: 24px; position: sticky; top: 0; z-index: 10; }
+  .logo { font-weight: 700; font-size: 20px; letter-spacing: .5px; }
+  .logo span { color: #4fc3a1; }
+  nav button { background: none; border: none; color: #cdd3e0; font-size: 15px; cursor: pointer; padding: 8px 12px; border-radius: 6px; }
+  nav button:hover, nav button.active { color: #fff; background: rgba(255,255,255,.12); }
+  .cart-btn { margin-left: auto; background: #4fc3a1; color: #16213e; border: none; padding: 10px 18px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 15px; }
+  .wrap { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+  .meta { font-size: 12px; color: #888; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+  .card { background: #fff; border-radius: 10px; padding: 14px; box-shadow: 0 1px 3px rgba(0,0,0,.08); display: flex; flex-direction: column; gap: 6px; }
+  .card .tag { font-size: 11px; text-transform: uppercase; color: #4fc3a1; font-weight: 700; letter-spacing: .5px; }
+  .card h3 { font-size: 16px; line-height: 1.3; min-height: 42px; }
+  .card .spec { font-size: 13px; color: #666; flex: 1; }
+  .card .row { display: flex; justify-content: space-between; align-items: center; }
+  .price { font-weight: 700; font-size: 17px; }
+  .rating { font-size: 13px; color: #e8a13a; }
+  .add { background: #16213e; color: #fff; border: none; padding: 9px 0; border-radius: 7px; cursor: pointer; font-weight: 600; }
+  .add:hover { background: #4fc3a1; }
+  /* cart drawer */
+  .drawer { position: fixed; right: -420px; top: 0; width: 400px; height: 100%; background: #fff; box-shadow: -4px 0 16px rgba(0,0,0,.15); transition: right .25s; padding: 20px; overflow-y: auto; z-index: 20; }
+  .drawer.open { right: 0; }
+  .drawer h2 { margin-bottom: 12px; }
+  .drawer .line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #eee; font-size: 14px; }
+  .drawer .total { font-size: 17px; font-weight: 700; padding: 12px 0; }
+  .checkout { width: 100%; background: #4fc3a1; border: none; color: #16213e; font-weight: 700; padding: 12px; border-radius: 8px; cursor: pointer; font-size: 15px; }
+  .banner { background: #e8f7f1; border: 1px solid #4fc3a1; color: #0c5c42; padding: 8px 12px; border-radius: 8px; margin-bottom: 14px; font-size: 13px; display: none; }
+  #orderBox { display: none; background: #fff; border: 2px solid #4fc3a1; border-radius: 10px; padding: 16px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Shop<span>Demo</span></div>
+  <nav>
+    <button data-cat="" class="active">All</button>
+    <button data-cat="mice">Mice</button>
+    <button data-cat="laptops">Laptops</button>
+    <button data-cat="phones">Phones</button>
+  </nav>
+  <button class="cart-btn" onclick="toggleCart()">Cart (<span id="cartCount">0</span>)</button>
+</header>
+<div class="wrap">
+  <div class="meta">demo store — <span id="modeBadge"></span></div>
+  <div id="banner" class="banner"></div>
+  <div class="grid" id="grid"></div>
+  <div id="orderBox"></div>
+</div>
+<div class="drawer" id="drawer">
+  <h2>Your Cart</h2>
+  <div id="cartLines"></div>
+  <div class="total">Total: ₹<span id="cartTotal">0</span></div>
+  <button class="checkout" onclick="checkout()">Checkout</button>
+</div>
+<script>
+const SID = localStorage.getItem('sid') || (() => { const s = crypto.randomUUID(); localStorage.setItem('sid', s); return s; })();
+const IS_MCP = location.host.includes('withmcp');
+document.getElementById('modeBadge').textContent = IS_MCP ? 'WebMCP ENABLED — agents can call tools at /.well-known/mcp + /mcp' : 'plain site — agents must use DOM/scraping';
+let cat = '';
+async function api(path, body) {
+  const r = await fetch(path, {method: body ? 'POST' : 'GET', headers: {'Content-Type': 'application/json', 'X-Session-Id': SID}, body: body ? JSON.stringify(body) : undefined});
+  return r.json();
+}
+async function load() {
+  const items = await api('/api/products' + (cat ? '?category=' + cat : ''));
+  document.getElementById('grid').innerHTML = items.map(p => `
+    <div class="card">
+      <div class="tag">${p.category}</div>
+      <h3>${p.name}</h3>
+      <div class="spec">${p.spec}</div>
+      <div class="row"><span class="price">₹${p.price.toLocaleString('en-IN')}</span><span class="rating">★ ${p.rating}</span></div>
+      <button class="add" onclick="add(${p.id})">Add to cart</button>
+    </div>`).join('');
+}
+async function add(id) {
+  await api('/api/cart/add', {id, qty: 1});
+  flash(`${document.querySelector(`[onclick="add(${id})"]`).closest('.card').querySelector('h3').textContent} added to cart`);
+  refreshCart();
+}
+async function refreshCart() {
+  const c = await api('/api/cart');
+  document.getElementById('cartCount').textContent = c.items.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('cartTotal').textContent = c.total.toLocaleString('en-IN');
+  document.getElementById('cartLines').innerHTML = c.items.map(i =>
+    `<div class="line"><span>${i.product.name} × ${i.qty}</span><span>₹${(i.product.price * i.qty).toLocaleString('en-IN')}</span></div>`).join('') || '<div class="line">Cart is empty</div>';
+}
+async function checkout() {
+  const r = await api('/api/checkout', {});
+  if (r.ok) {
+    document.getElementById('orderBox').innerHTML = `<h3>✅ Order ${r.order_id} placed — ₹${r.total.toLocaleString('en-IN')}</h3><p style="font-size:13px;color:#666;margin-top:6px">${r.items.map(i => `${i.name} ×${i.qty}`).join(', ')}</p>`;
+    document.getElementById('drawer').classList.remove('open');
+    refreshCart();
+  } else { flash(r.error); }
+}
+function flash(msg) {
+  const b = document.getElementById('banner');
+  b.textContent = msg; b.style.display = 'block';
+  setTimeout(() => b.style.display = 'none', 3500);
+}
+function toggleCart() { document.getElementById('drawer').classList.toggle('open'); }
+document.querySelectorAll('nav button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('nav button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active'); cat = b.dataset.cat; load();
+});
+if (IS_MCP) {
+  // WebMCP hint for agents + humans: page registers its MCP server location
+  const s = document.createElement('script');
+  s.type = 'application/json'; s.id = 'mcp-server-config';
+  s.textContent = JSON.stringify({mcpServers: {shopdemo: {endpoint: '/mcp', discovery: '/.well-known/mcp'}}});
+  document.head.appendChild(s);
+}
+load(); refreshCart();
+</script>
+</body>
+</html>

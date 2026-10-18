@@ -1,0 +1,56 @@
+[
+ {
+  "task": 1,
+  "site": "plain",
+  "requests": 3,
+  "bytes": 8439,
+  "secs": 0.04,
+  "success": true,
+  "pick": "Logitech M235 Wireless"
+ },
+ {
+  "task": 1,
+  "site": "mcp",
+  "requests": 4,
+  "bytes": 2252,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Logitech M235 Wireless"
+ },
+ {
+  "task": 2,
+  "site": "plain",
+  "requests": 3,
+  "bytes": 8440,
+  "secs": 0.02,
+  "success": true,
+  "pick": "HP Pavilion 14"
+ },
+ {
+  "task": 2,
+  "site": "mcp",
+  "requests": 4,
+  "bytes": 2234,
+  "secs": 0.02,
+  "success": true,
+  "pick": "HP Pavilion 14"
+ },
+ {
+  "task": 3,
+  "site": "plain",
+  "requests": 4,
+  "bytes": 8564,
+  "secs": 0.03,
+  "success": true,
+  "pick": "Redmi Note 13 Pro"
+ },
+ {
+  "task": 3,
+  "site": "mcp",
+  "requests": 5,
+  "bytes": 2851,
+  "secs": 0.02,
+  "success": true,
+  "pick": "Redmi Note 13 Pro"
+ }
+]

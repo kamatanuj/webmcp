@@ -1,0 +1,88 @@
+{
+ "mice": [
+  {
+   "id": 1,
+   "name": "Logitech MX Master 3S",
+   "price": 8995,
+   "brand": "Logitech",
+   "rating": 4.7,
+   "spec": "8K DPI, USB-C, silent clicks"
+  },
+  {
+   "id": 2,
+   "name": "Logitech M235 Wireless",
+   "price": 1295,
+   "brand": "Logitech",
+   "rating": 4.4,
+   "spec": "2.4GHz, 24-month battery"
+  },
+  {
+   "id": 3,
+   "name": "Apple Magic Mouse",
+   "price": 7500,
+   "brand": "Apple",
+   "rating": 4.3,
+   "spec": "Multi-touch, Lightning charging"
+  },
+  {
+   "id": 4,
+   "name": "HP X3000 G2",
+   "price": 899,
+   "brand": "HP",
+   "rating": 4.2,
+   "spec": "1600 DPI, 18-month battery"
+  }
+ ],
+ "laptops": [
+  {
+   "id": 11,
+   "name": "MacBook Air M3 13",
+   "price": 114900,
+   "brand": "Apple",
+   "rating": 4.9,
+   "spec": "M3, 8GB, 256GB SSD"
+  },
+  {
+   "id": 12,
+   "name": "Dell Inspiron 15 3520",
+   "price": 45990,
+   "brand": "Dell",
+   "rating": 4.2,
+   "spec": "i5-1235U, 8GB, 512GB"
+  },
+  {
+   "id": 13,
+   "name": "HP Pavilion 14",
+   "price": 52990,
+   "brand": "HP",
+   "rating": 4.3,
+   "spec": "i5-1335U, 16GB, 512GB"
+  }
+ ],
+ "phones": [
+  {
+   "id": 24,
+   "name": "Redmi Note 13 Pro",
+   "price": 21999,
+   "brand": "Xiaomi",
+   "rating": 4.4,
+   "spec": "200MP, AMOLED"
+  },
+  {
+   "id": 26,
+   "name": "iQOO Z9s Pro",
+   "price": 24999,
+   "brand": "iQOO",
+   "rating": 4.4,
+   "spec": "SD 7 Gen 3, 5500mAh"
+  },
+  {
+   "id": 28,
+   "name": "Nothing Phone 2a",
+   "price": 23999,
+   "brand": "Nothing",
+   "rating": 4.3,
+   "spec": "Glyph, SD 7+ Gen 3"
+  }
+ ]
+}

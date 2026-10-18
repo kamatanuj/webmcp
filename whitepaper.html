@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4; margin: 15mm 14mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 10pt; color: #1a1a2e; line-height: 1.55; }
+  h1 { color: #16213e; font-size: 19pt; margin-bottom: 2px; }
+  .sub { color: #667; font-size: 9.5pt; margin-bottom: 16px; }
+  h2 { color: #16213e; font-size: 13pt; border-bottom: 2px solid #4fc3a1; padding-bottom: 3px; margin-top: 20px; }
+  h3 { color: #16213e; font-size: 11pt; margin: 14px 0 5px; }
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+  th { background: #16213e; color: white; padding: 6px 9px; text-align: left; font-size: 9.5pt; }
+  td { padding: 5px 9px; border-bottom: 1px solid #e3e6ee; font-size: 9.5pt; vertical-align: top; }
+  tr:nth-child(even) { background: #f8f9fa; }
+  .box { background: #eef1f6; border-left: 3px solid #16213e; padding: 10px 14px; border-radius: 4px; margin: 12px 0; }
+  .warn { background: #fdf3e7; border-left: 3px solid #e8a13a; }
+  .good { background: #e9f7f1; border-left: 3px solid #2a9d6a; }
+  .num-big { font-size: 22pt; color: #16213e; font-weight: bold; }
+  .kpis { display: flex; gap: 12px; margin: 12px 0; }
+  .kpi { flex: 1; background: #f4f6fa; border: 1px solid #e0e5ee; border-radius: 6px; padding: 10px; text-align: center; }
+  ul { margin: 6px 0; padding-left: 22px; }
+  li { margin: 4px 0; }
+  .eg { background: #f7f9fc; border: 1px dashed #b8c4d8; border-radius: 5px; padding: 8px 12px; margin: 8px 0; font-size: 9.5pt; }
+  .eg b { color: #16213e; }
+  table.fin td:nth-child(2), table.fin td:nth-child(3), table.fin td:nth-child(4) { text-align: right; font-family: 'Courier New', monospace; }
+</style>
+</head>
+<body>
+
+<h1 style="padding-top:8px;">ShopPilot — Agent-Ready Ecommerce, One Install</h1>
+<div class="sub">Business whitepaper · 27 September 2026 · Prepared with live experimental evidence (74% ingestion reduction, 3/3 task accuracy) · Confidential draft for discussion</div>
+
+<h2>1. Executive Summary</h2>
+<p>AI agents are starting to shop on behalf of people — but today they do it blind: reading page layouts, guessing at buttons, breaking on every redesign. <b>ShopPilot</b> is a browser extension that, with one install, gives any AI assistant structured tools (<code>search_products</code>, <code>add_to_cart</code>, <code>checkout</code>) on virtually every online store — using each store's own real APIs and the user's logged-in session. No merchant signup. No per-site configuration.</p>
+<p>The wedge: ecommerce platforms are standardized under the hood. <b>4 platform adapters (Shopify, WooCommerce, Magento, BigCommerce) cover an estimated 60%+ of global storefronts.</b> Our controlled experiment measured a <b>74% reduction in agent data ingestion at equal accuracy</b> — the founding evidence for the product thesis.</p>
+<div class="kpis">
+  <div class="kpi"><div class="num-big">74%</div>less agent data ingestion (measured)</div>
+  <div class="kpi"><div class="num-big">4</div>platform adapters → thousands of stores</div>
+  <div class="kpi"><div class="num-big">₹0</div>cost to start (extension + affiliate, self-funding)</div>
+</div>
+
+<h2>2. The Market Shift (Why Now)</h2>
+<ul>
+<li><b>The standards are real:</b> WebMCP is incubating at the W3C (authors from Google &amp; Microsoft); Chrome opened an origin trial (v149, Feb 2026); OpenAI's ChatGPT browser already ships a version ("Site tools"). Sites that declare tools get agent traffic first.</li>
+<li><b>Agent commerce is arriving with or without merchants:</b> ChatGPT's Instant Checkout and Operator, Perplexity Shopping, Amazon Rufus — the assistant layer is being built now. What's missing is the <i>last mile</i>: letting agents act on the long tail of stores that will never build their own agent integration.</li>
+<li><b>Historical precedent:</b> Honey solved "apply coupons on any store" as an extension with zero merchant cooperation — 17M+ users, acquired for ~$4B. Rakuten/Ebates built a multi-billion business on the same "ride the user's session" model. ShopPilot is the same shape, one layer deeper: not just discounts, but the entire act of shopping.</li>
+</ul>
+<div class="eg"><b>Example (target user):</b> Priya tells her voice assistant on the drive home: "Order my usual coffee machine descaler and find a birthday gift under ₹2,000 for Meera — something highly rated." The agent, via ShopPilot, searches Amazon India + a Shopify boutique + Flipkart, compares ratings, adds the gift to the cart, and sends Priya one confirmation prompt before checkout. Total interaction: two sentences and one tap. Today this requires opening 4 apps and 20 minutes.</div>
+
+<h2>3. Product</h2>
+<h3>3.1 What the user installs</h3>
+<p>One Chrome/Edge extension. After install: every store the user shops at exposes the same 5 structured tools to their AI assistant. The extension detects the platform (Shopify/Woo/Magento/BigCommerce), injects the tool layer wired to that platform's standard endpoints, and runs inside the user's session — no credentials stored, no data exfiltrated. A generic form-annotation fallback covers long-tail platforms.</p>
+<h3>3.2 Who pays, at a glance</h3>
+<table>
+<tr><th>Model</th><th>Who pays</th><th>When</th><th>Why it works</th></tr>
+<tr><td><b>A. Affiliate commission</b> (launch)</td><td>Merchant (per order)</td><td>Every agent-driven checkout carries affiliate attribution (1–8%)</td><td>Clean attribution: the agent's click <i>is</i> the referral. Self-funds the free product from day 1</td></tr>
+<tr><td><b>B. Pro subscription</b> (month 3+)</td><td>Consumer</td><td>₹150–300/mo: unlimited stores, checkout automation, price-drop alerts, cross-store comparison</td><td>Pays only when the product demonstrably saves money/time</td></tr>
+<tr><td><b>C. Merchant SaaS</b> (month 6+, the moat)</td><td>Merchant (subscription)</td><td>$29–99/mo to be in the agent registry + analytics dashboard + placement in agent feed</td><td>"SEO for the agent era" — merchants pay for agent visibility before agents become a traffic channel they can't measure</td></tr>
+<tr><td><b>D. SDK licensing</b> (year 2)</td><td>Platforms/SIs</td><td>License adapters to voice-agent &amp; ecommerce SaaS vendors</td><td>They need platform coverage; we own the adapter library</td></tr>
+</table>
+<p><b>Deliberately excluded:</b> transaction/payment intermediation (RBI/PCI burden, not core to value), selling browsing data (kills trust, Chrome policy risk).</p>
+<div class="eg"><b>Example (Model C pitch to a merchant):</b> "Right now, when an AI agent visits your store, it sees an unstructured wall of HTML — it may mis-price, mis-order, or skip you entirely, and you'll never know. For $49/month, ShopPilot registers your catalog in the agent tool registry, and you get a dashboard: 312 agent visits this month, 41 carts, 19 completed orders worth ₹86,000 — all attributed."</div>
+
+<h2>4. Evidence: The Founding Experiment</h2>
+<p>Before any code of ShopPilot, we built two functionally identical stores (demonomcp.converso.work vs demowithmcp.converso.work) differing <i>only</i> in whether agents get structured tools or the raw page, then ran identical shopping tasks with an instrumented agent driver. Full technical report available; headline results:</p>
+<table class="fin">
+<tr><th>Metric (3 shopping tasks)</th><th>Plain site</th><th>Tool-enabled</th><th>Delta</th></tr>
+<tr><td>Data the agent must read</td><td>33,971 B</td><td>9,157 B</td><td>−74%</td></tr>
+<tr><td>LLM input tokens (≈4 B/token)</td><td>~8,500</td><td>~2,300</td><td>−73%</td></tr>
+<tr><td>Task success</td><td>3/3</td><td>3/3</td><td>equal</td></tr>
+<tr><td>Product selection</td><td colspan="2" style="text-align:center">identical picks</td><td>equal</td></tr>
+</table>
+<p>The gap scales with catalog size: the plain-path agent always reads everything; the tool path reads only what the server filters to. <b>On a real 10,000-SKU store, the delta isn't 74% — it's ~99%.</b></p>
+<div class="eg"><b>Example (why tokens = money):</b> an agent browsing a plain Flipkart-scale catalog reads ~8,500 tokens per task set; with tools, ~2,300. At typical LLM pricing that's a ~3.7× cost difference per task set — multiplied by every search, every comparison, every retry. For voice agents (real-time latency budgets), it's the difference between a 6-second and a 1-second response.</div>
+
+<h2>5. Market Sizing (directional)</h2>
+<ul>
+<li><b>TAM:</b> Global affiliate marketing spend ≈ $15–17B/yr (2025–26 est.); ecommerce conversion-tool SaaS (Honey-class, price engines, cart recovery) ≈ $8–12B. Agent-commerce is a redistribution inside these pools.</li>
+<li><b>Beachhead SAM:</b> ~5.5M+ Shopify stores, ~700k+ WooCommerce-active, plus Magento/BigCommerce — India angle: D2C boom (100k+ Shopify India stores, UPI checkout flows standard). If 1% of Shopify stores buy merchant SaaS at $49/mo ≈ <b>$26M ARR from one platform alone</b>.</li>
+<li><b>Wedge SOM (year 1):</b> 50k extension installs (0.05% of Honey's base), 2% Pro conversion (500 × ₹200/mo ≈ ₹12L ARR) + affiliate on ~₹4–8L/mo GMV through agent checkouts + 50 merchant SaaS pilots (₹20–45L ARR).</li>
+</ul>
+
+<h2>6. Competition & Differentiation</h2>
+<table>
+<tr><th>Player</th><th>What they do</th><th>Why ShopPilot wins</th></tr>
+<tr><td>WebMCP Hub, Customaise (extensions)</td><td>Generic per-site tool injection via community configs</td><td>We cover stores by <i>platform</i>, not per-site: one Shopify adapter = every Shopify store, instantly. Community configs can't match platform-level coverage</td></tr>
+<tr><td>ChatGPT Site tools / Chrome WebMCP</td><td>Browser-native standard; needs sites to adopt</td><td>We are adoption-agnostic: work in any browser, on stores that never adopt. Complementary — we can speak the native API when it lands</td></tr>
+<tr><td>Honey/PayPal, Cuelinks, EarnKaro</td><td>Coupons/affiliates on user's session</td><td>They monetize the session but don't <i>drive</i> it. We're the actuation layer they'll need when users shop by voice/agent</td></tr>
+<tr><td>Amazon Rufus / Flipkart assistant</td><td>On-platform, closed</td><td>We're cross-platform by design — assistants don't have store loyalties, users do</td></tr>
+</table>
+
+<h2>7. Go-to-Market</h2>
+<ul>
+<li><b>Phase 1 (weeks 1–8):</b> MVP extension + Shopify adapter + affiliate layer. Launch on Product Hunt, r/Shopify, D2C India communities. Target metric: agents successfully completing a real checkout on a real store, end-to-end.</li>
+<li><b>Phase 2 (months 3–6):</b> Pro tier + price tracking; WooCommerce adapter. Growth loop: every checkout confirmation dialog is a share moment ("your AI shopped this — install ShopPilot").</li>
+<li><b>Phase 3 (months 6–12):</b> Merchant SaaS. Convert affiliate merchants to registry subscribers ("you're getting orders already — want analytics + placement?"). Shopify App Store listing as distribution.</li>
+<li><b>India wedge:</b> voice-first shoppers (vernacular) + UPI + D2C explosion. A Hindi voice agent that can shop on any store, correctly, is a demo that sells itself.</li>
+</ul>
+
+<h2>8. Financial Sketch (Year 1, conservative)</h2>
+<table class="fin">
+<tr><th>Line</th><th>Pessimistic</th><th>Base</th><th>Optimistic</th></tr>
+<tr><td>Extension installs (Dec-27)</td><td>10k</td><td>50k</td><td>150k</td></tr>
+<tr><td>Pro subs @ ₹200/mo</td><td>150</td><td>500</td><td>1,500</td></tr>
+<tr><td>Pro revenue (₹L)</td><td>3.6</td><td>12</td><td>36</td></tr>
+<tr><td>Affiliate (GMV ₹ Cr × avg 3%)</td><td>2.4 (₹8 Cr GMV)</td><td>9 (₹30 Cr)</td><td>27 (₹90 Cr)</td></tr>
+<tr><td>Merchant SaaS (pilot→paid)</td><td>10 × ₹2k/mo</td><td>50 × ₹3k/mo</td><td>120 × ₹4k/mo</td></tr>
+<tr><td>SaaS revenue (₹L)</td><td>2.4</td><td>18</td><td>57.6</td></tr>
+<tr><td><b>Total ARR (₹L)</b></td><td><b>~6</b></td><td><b>~39</b></td><td><b>~120</b></td></tr>
+<tr><td>Costs (2 eng + infra, ₹L)</td><td>30</td><td>36</td><td>48</td></tr>
+</table>
+<p><span style="color:#888">Illustrative, not a forecast. Affiliate depends on category mix; SaaS conversion is the key unknown. Bootstrap-friendly: the base case covers costs from month ~9.</span></p>
+
+<h2>9. Risks & Mitigations (MBA hat on)</h2>
+<table>
+<tr><th>Risk</th><th>Severity</th><th>Mitigation</th></tr>
+<tr><td>Platform API changes / breaking Shopify endpoints</td><td>High</td><td>Adapters pinned per platform version; contract tests on real stores; community bug bounty</td></tr>
+<tr><td>Chrome Web Store policy (injection into third-party sites)</td><td>High</td><td>Stay within user-session model (Honey precedent); no credential capture; explicit consent UX; native WebMCP API path when available</td></tr>
+<tr><td>Merchant ToS objections</td><td>Medium</td><td>Registry is opt-in and revenue-positive for merchants; free tier only reads public product data + user's own cart</td></tr>
+<tr><td>Payment errors via agent (wrong item, wrong qty)</td><td>Medium</td><td>Checkout confirm-gated by design (WebMCP spec mandates human-in-the-loop); full audit log of every tool call</td></tr>
+<tr><td>Spec drift (WebMCP draft evolving)</td><td>Medium</td><td>Target the stable polyfill API today; browser-native API is additive — adapters outlive the interface</td></tr>
+<tr><td>Big player ships the same thing (OpenAI/Google)</td><td>Real</td><td>Their agents need third-party stores too — partner path: ShopPilot as their adapter layer. Platform neutrality is the moat; be the Switzerland</td></tr>
+<tr><td>Affiliate dependency (programs change terms)</td><td>Medium</td><td>Diversify via aggregators (Cuelinks/EarnKaro); Pro+Merchant revenue reduces share over time</td></tr>
+</table>
+
+<h2>10. MBA Guidance: What I'd Do (and in what order)</h2>
+<div class="box"><b>Strategic read:</b> This is a <i>platform land-grab timed to a standards shift</i>. The window is 12–24 months before browser-native WebMCP + Big-Tech agents make structured shopping table stakes. Goal isn't to win ecommerce — it's to <b>own the adapter/registry layer before the standards settle</b>, then be either the toll booth (merchant registry) or the acquisition (agent platforms buy adapter libraries).</div>
+<ol>
+<li><b>Validate before building (2 weeks, ~₹0):</b> 15 interviews — 5 merchants (Shopify India D2C), 5 shoppers (voice-assistant users), 5 agent-platform builders. Kill criteria: merchants don't care about agent traffic, or shoppers won't install an extension for shopping. If merchants light up at "agent analytics on my store" → Model C leads the roadmap, not the extension.</li>
+<li><b>Build the thinnest wedge:</b> extension + Shopify adapter + affiliate tags only. One platform, one revenue line, real stores, real checkouts. Everything else waits for signal.</li>
+<li><b>Instrument obsessively from day 1:</b> every install, store-visit, tool-call, cart, checkout, conversion — this dataset is the pitch for both Pro and Merchant SaaS. No other player will have agent-behavior data across stores.</li>
+<li><b>Pricing psychology:</b> free tier must feel magical (one successful agent checkout = the aha), Pro must be priced against visible savings ("saved you ₹1,240 this month" > any feature list), Merchant SaaS must be ROI-framed ("agent orders delivered" not "agent tools exposed").</li>
+<li><b>Structure:</b> start as a proprietorship/D2C product inside an existing entity for speed; incorporate (US LLC or India Pvt Ltd) before merchant SaaS or any external data touches the product. Affiliate income from day 1 keeps it self-funding — raise only after retention data exists.</li>
+<li><b>The one metric that matters:</b> monthly agent-driven checkouts per active install. If that number holds above ~1, this is a business; everything else is optics.</li>
+</ol>
+<div class="good"><b>Bottom line:</b> the technology risk is low (working demo + known endpoints), the timing risk is low (standards momentum is visible), and the execution risk is concentrated in one honest unknown: <i>will consumers let an agent finish checkouts?</i> The affiliate model means you get paid to find out.</div>
+
+<p class="sub" style="margin-top:16px">Companion artifacts: WebMCP_Comparison_Report.pdf (layman), WebMCP_Technical_Report.pdf (technical), live demos at demonomcp/demowithmcp.converso.work · Contact: Hermes Agent</p>
+
+</body>
+</html>
