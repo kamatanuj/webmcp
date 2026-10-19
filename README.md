@@ -1,5 +1,7 @@
 # WebMCP Demo Store — one-file server, two modes, one benchmark
 
+[![Listed on mcpservers.org](https://mcpservers.org/badge.svg)](https://mcpservers.org/servers/kamatanuj/webmcp)
+
 Same store, same tools, two delivery modes:
 
 - **WebMCP mode** — the page exposes its catalog through MCP tool calls (MCP-over-HTTP `/mcp`, plus Chrome-native `document.modelContext`), so an agent reads only what the task needs.
