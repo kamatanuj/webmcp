@@ -3,6 +3,25 @@
 // using the store's own public storefront APIs + the user's session. No proxy servers.
 (() => {
   if (window.__shoppilot_mcp) return;  // SPA re-injection guard
+  const AFFILIATES = [
+    // Attribution layer: fill tags from your affiliate programs (EarnKaro dashboard
+    // shows the tag/affid per network; Shopify Collabs issues ?ref= codes per store).
+    // Empty objects = no rewrite, tools behave exactly as before.
+    {match: /(^|\.)amazon\.(com|in)$/, params: {}},          // e.g. {tag: 'shoppilot-21'}
+    {match: /(^|\.)flipkart\.com$/, params: {}},              // e.g. {affExtParam1: 'PID', affExtParam2: 'SID'}
+    {match: /(^|\.)myntra\.com$/, params: {}},                // e.g. {aff_id: '...'}
+    // Generic Shopify Collabs-style referral, set the store's code here:
+    // {match: /(^|\.)allbirds\.com$/, params: {ref: 'shoppilot'}},
+  ];
+  function tagUrl(u) {
+    try {
+      const url = new URL(u, location.origin);
+      const cfg = AFFILIATES.find(a => a.match.test(url.hostname) && Object.keys(a.params).length);
+      if (!cfg) return {url: u, tagged: false};
+      for (const [k, v] of Object.entries(cfg.params)) url.searchParams.set(k, v);
+      return {url: url.toString(), tagged: true};
+    } catch { return {url: u, tagged: false}; }
+  }
   const t = { q: null };
   async function isShopify() {
     try {
@@ -21,7 +40,8 @@
       .slice(0, 10)
       .map(p => ({handle: p.handle, title: p.title, vendor: p.vendor, type: p.product_type,
         price: (p.variants[0] && p.variants[0].price) || '', variants: p.variants.length,
-        tags: (p.tags || []).slice(0, 5)}));
+        tags: (p.tags || []).slice(0, 5),
+        url: tagUrl(location.origin + '/products/' + p.handle).url}));
     return {store: location.origin, results: hits, count: hits.length};
   }
   async function productDetails({handle}) {
@@ -49,12 +69,13 @@
   async function checkout({variant_id, quantity}) {
     // Shopify cart permalink: browser resolves it server-side to a real /checkouts/cn/<token>
     // page where payment completes (human or desktop agent). Nothing is charged by the tool.
-    return {checkout_url: location.origin + '/cart/' + variant_id + ':' + (Number(quantity) || 1),
+    const tagged = tagUrl(location.origin + '/cart/' + variant_id + ':' + (Number(quantity) || 1));
+    return {checkout_url: tagged.url, affiliate_tagged: tagged.tagged,
       note: 'Open this URL to complete payment — requires user consent.'};
   }
   const T = (name, description, properties, required, execute) =>
     ({name, description, inputSchema: {type: 'object', properties, required}, execute});
-  window.__shoppilot = {searchProducts, productDetails, addToCart, getCart, checkout};
+  window.__shoppilot = {searchProducts, productDetails, addToCart, getCart, checkout, tagUrl, AFFILIATES};
   function registerAll() {
     window.__shoppilot_mcp = true;
     const mc = navigator.modelContext;
@@ -69,7 +90,7 @@
     mc.registerTool(T('checkout', 'Get the checkout URL for a variant. Payment completes in the browser with user consent.',
       {variant_id: {type: 'number', description: 'numeric variant ID'},
        quantity: {type: 'number', description: 'quantity, default 1'}}, ['variant_id'], checkout));
-    console.info('[ShopPilot] 5 WebMCP tools registered for', location.origin);
+    console.info('[ShopPilot] 5 WebMCP tools + affiliate attribution registered for', location.origin);
   }
   isShopify().then(ok => { if (ok) registerAll(); });
 })();

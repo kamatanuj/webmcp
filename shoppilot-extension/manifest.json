@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ShopPilot — Agent-Ready Shopping",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Gives AI agents real structured tools (search, cart, checkout) on any Shopify store, using the store's own APIs and your logged-in session.",
   "icons": {"16": "icon16.png", "48": "icon48.png", "128": "icon128.png"},
   "content_scripts": [
