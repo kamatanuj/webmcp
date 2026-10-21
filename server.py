@@ -179,11 +179,15 @@ class H(BaseHTTPRequestHandler):
                 self.end_headers()
                 with open(fn, "rb") as f:
                     self.wfile.write(f.read())
+            else:
+                # not a real static file (e.g. GET /mcp on plain mode) → clean 404,
+                # never a silent connection close (that reads as 502 through nginx)
+                self._json(404, {"error": "not found"})
         else:
-            self.send_response(200)
-            self.send_header("Content-Type", "text/html")
-            self.end_headers()
             with open(f"{DIR}/index.html", "rb") as f:
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html")
+                self.end_headers()
                 self.wfile.write(f.read().replace(b"__MODE__", MODE.encode()))
 
     def do_POST(self):

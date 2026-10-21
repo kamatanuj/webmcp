@@ -1,0 +1,14 @@
+{
+  "tools_sha256": "d603406d6a6ab501d1a0cd025226e81f220329a03bb3ad0a48b6df19e4670b57",
+  "tool_count": 5,
+  "tool_names": ["search_products", "get_product_details", "add_to_cart", "get_cart", "checkout"],
+  "captures": [
+    {
+      "hash": "d603406d6a6ab501d1a0cd025226e81f220329a03bb3ad0a48b6df19e4670b57",
+      "source": "Dominion Observatory independent snapshot",
+      "read_at": "2026-10-18T12:10Z",
+      "verified_ourselves": "2026-10-21T09:20Z (live /mcp tools/list, hash reproduced)"
+    }
+  ],
+  "note": "SHA-256 over the tools/list array, sort_keys + compact JSON (separators ',',':'). A hash mismatch means a tool's name, description or inputSchema changed silently. CI fails until this file is re-baselined with a new captures entry (source of the change, date)."
+}
