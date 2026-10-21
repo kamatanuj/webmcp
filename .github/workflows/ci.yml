@@ -10,3 +10,6 @@ jobs:
       - uses: actions/checkout@v4
       - name: Smoke-test both modes + tools/list baseline
         run: python3 smoke.py
+      - name: Dominion drift check (non-blocking)
+        continue-on-error: true
+        run: curl -sf "https://dominionobservatory.com/api/drift?server=https://demowithmcp.converso.work/mcp"
